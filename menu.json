@@ -1,0 +1,129 @@
+{
+  "_readme": "EDIT THIS FILE TO CHANGE THE MENU. Nothing else needs touching. Prices are in INR. All prices below are PLACEHOLDERS set to plausible Mumbai QSR levels — replace them with WING'D's real till prices before this goes to customers. 'whatsapp' must be changed to the WING'D store number (country code, no + or spaces).",
+  "store": {
+    "name": "WING'D",
+    "tagline": "Wing experts. Bandra West.",
+    "whatsapp": "918707546331",
+    "whatsappNote": "PLACEHOLDER — currently routes to Shive. Replace with the WING'D store number.",
+    "phone": "+91 87075 46331",
+    "address": "Bandra West, Mumbai 400050",
+    "mapUrl": "https://maps.google.com/?q=Bandra+West+Mumbai",
+    "instagram": "https://instagram.com/wingd.co",
+    "hours": "12:00 PM – 1:00 AM, every day",
+    "currency": "₹",
+    "deliveryRadiusKm": 6,
+    "deliveryFee": 49,
+    "freeDeliveryAbove": 799,
+    "packagingFee": 20,
+    "gstPercent": 5,
+    "minOrder": 199,
+    "prepTimeMins": "18–25",
+    "swiggy": "",
+    "zomato": "",
+    "orderTypes": ["Delivery", "Takeaway", "Dine-in"]
+  },
+  "flavours": [
+    { "id": "plain",      "name": "Plain",                "heat": 0, "type": "Naked",   "note": "No sauce, no rub. Just the fry." },
+    { "id": "garlic-parm","name": "Garlic Parmesan",      "heat": 0, "type": "Wet",     "note": "Creamy, savoury, heavy on the garlic." },
+    { "id": "lemon-pep",  "name": "Lemon Pepper",         "heat": 1, "type": "Dry rub", "note": "The bestseller. Zesty, sharp, no mess." },
+    { "id": "hawaiian",   "name": "Hawaiian",             "heat": 1, "type": "Wet",     "note": "Sweet island citrus glaze." },
+    { "id": "mild",       "name": "Mild",                 "heat": 1, "type": "Wet",     "note": "Buttery buffalo, dialled down." },
+    { "id": "bbq",        "name": "Hickory Smoked BBQ",   "heat": 1, "type": "Wet",     "note": "Smoky, sticky, crowd-safe." },
+    { "id": "bombay",     "name": "Bombay Masala Dust",   "heat": 2, "type": "Dry rub", "note": "House rub. Amchur, jeera, kasuri methi.", "house": true },
+    { "id": "hot-honey",  "name": "Hot Honey Rub",        "heat": 2, "type": "Dry rub", "note": "Sweet up front, slow burn after." },
+    { "id": "louisiana",  "name": "Louisiana Rub",        "heat": 2, "type": "Dry rub", "note": "Cajun rub with a buffalo finish." },
+    { "id": "original",   "name": "Original Hot",         "heat": 3, "type": "Wet",     "note": "The classic buffalo benchmark." },
+    { "id": "korean-q",   "name": "Spicy Korean Q",       "heat": 3, "type": "Wet",     "note": "Gochujang, soy, sesame, ginger." },
+    { "id": "kashmiri",   "name": "Kashmiri Chilli Rub",  "heat": 3, "type": "Dry rub", "note": "House rub. Colour of a sunset, heat of a slap.", "house": true },
+    { "id": "cajun",      "name": "Cajun",                "heat": 4, "type": "Wet",     "note": "Original Hot tossed in Louisiana rub." },
+    { "id": "mango-hab",  "name": "Mango Habanero",       "heat": 4, "type": "Wet",     "note": "Sweet mango, then habanero freight train." },
+    { "id": "atomic",     "name": "Atomic",               "heat": 5, "type": "Wet",     "note": "Signed waiver energy. Do not touch your eyes." }
+  ],
+  "dips": [
+    { "id": "ranch",   "name": "Ranch",        "price": 49 },
+    { "id": "bluechz", "name": "Blue Cheese",  "price": 59 },
+    { "id": "honeymus","name": "Honey Mustard","price": 49 },
+    { "id": "cheese",  "name": "Cheese Sauce", "price": 59 },
+    { "id": "chillimayo","name": "Chilli Mayo","price": 49 }
+  ],
+  "categories": [
+    {
+      "id": "combos",
+      "name": "Combos",
+      "tagline": "One person, one tray, done.",
+      "items": [
+        { "id": "c6",  "name": "6 pc Wing Combo",       "price": 399, "serves": 1, "flavours": 1, "dips": 1, "desc": "6 classic or boneless wings, 1 flavour, 1 dip, regular fries, 250ml drink.", "badge": "Most ordered" },
+        { "id": "c8",  "name": "8 pc Wing Combo",       "price": 489, "serves": 1, "flavours": 2, "dips": 1, "desc": "8 classic or boneless wings, up to 2 flavours, 1 dip, regular fries, 250ml drink." },
+        { "id": "c10", "name": "10 pc Wing Combo",      "price": 569, "serves": 1, "flavours": 2, "dips": 1, "desc": "10 classic or boneless wings, up to 2 flavours, 1 dip, regular fries, 250ml drink." },
+        { "id": "ct3", "name": "3 pc Tender Combo",     "price": 349, "serves": 1, "flavours": 1, "dips": 1, "desc": "3 crispy tenders, 1 flavour, 1 dip, regular fries, 250ml drink." },
+        { "id": "ct5", "name": "5 pc Tender Combo",     "price": 449, "serves": 1, "flavours": 2, "dips": 1, "desc": "5 crispy tenders, up to 2 flavours, 1 dip, regular fries, 250ml drink." },
+        { "id": "csw", "name": "Chicken Sandwich Combo","price": 389, "serves": 1, "flavours": 1, "dips": 1, "desc": "Crispy chicken sandwich in your flavour, regular fries, 250ml drink." }
+      ]
+    },
+    {
+      "id": "packs",
+      "name": "Group Packs",
+      "tagline": "Match nights, birthdays, and bad decisions.",
+      "items": [
+        { "id": "p15", "name": "15 pc Meal for Two",   "price": 899,  "serves": 2,   "flavours": 2, "dips": 2, "desc": "15 classic or boneless wings, up to 2 flavours, 2 dips, large fries, 2 drinks." },
+        { "id": "p20", "name": "20 pc Party Pack",     "price": 1149, "serves": "2–3","flavours": 3, "dips": 3, "desc": "20 wings, up to 3 flavours, 3 dips, large fries, 3 pc cajun corn.", "badge": "Best value" },
+        { "id": "p30", "name": "30 pc Crew Pack",      "price": 1649, "serves": "4–5","flavours": 3, "dips": 3, "desc": "30 wings, up to 3 flavours, 3 dips, large fries, veggie sticks." },
+        { "id": "p40", "name": "40 pc Game Day Pack",  "price": 2099, "serves": "5–6","flavours": 4, "dips": 4, "desc": "40 wings, up to 4 flavours, 4 dips, large fries, 2 veggie sticks." },
+        { "id": "p50", "name": "50 pc Big Night Pack", "price": 2549, "serves": "6–9","flavours": 4, "dips": 4, "desc": "50 wings, up to 4 flavours, 4 dips, 2 large fries, 2 veggie sticks." }
+      ]
+    },
+    {
+      "id": "wings",
+      "name": "Wings By The Piece",
+      "tagline": "Classic bone-in or boneless. Your call.",
+      "items": [
+        { "id": "w6",  "name": "6 pc Wings",  "price": 279,  "serves": 1,    "flavours": 1, "dips": 0, "desc": "6 wings tossed or rubbed in 1 flavour." },
+        { "id": "w10", "name": "10 pc Wings", "price": 429,  "serves": 1,    "flavours": 2, "dips": 0, "desc": "10 wings, up to 2 flavours." },
+        { "id": "w15", "name": "15 pc Wings", "price": 619,  "serves": 2,    "flavours": 2, "dips": 0, "desc": "15 wings, up to 2 flavours." },
+        { "id": "w20", "name": "20 pc Wings", "price": 789,  "serves": "2–3","flavours": 3, "dips": 0, "desc": "20 wings, up to 3 flavours." },
+        { "id": "w30", "name": "30 pc Wings", "price": 1129, "serves": "4–5","flavours": 3, "dips": 0, "desc": "30 wings, up to 3 flavours." },
+        { "id": "w50", "name": "50 pc Wings", "price": 1799, "serves": "6–9","flavours": 4, "dips": 0, "desc": "50 wings, up to 4 flavours." }
+      ]
+    },
+    {
+      "id": "tenders",
+      "name": "Tenders & Sandwiches",
+      "tagline": "Boneless, breaded, brined 12 hours.",
+      "items": [
+        { "id": "t3",  "name": "3 pc Crispy Tenders",     "price": 239, "serves": 1, "flavours": 1, "dips": 0, "desc": "3 whole-breast tenders in your flavour." },
+        { "id": "t5",  "name": "5 pc Crispy Tenders",     "price": 369, "serves": 1, "flavours": 2, "dips": 0, "desc": "5 tenders, up to 2 flavours." },
+        { "id": "t10", "name": "10 pc Crispy Tenders",    "price": 699, "serves": "2–3","flavours": 2, "dips": 0, "desc": "10 tenders, up to 2 flavours." },
+        { "id": "s1",  "name": "Classic Chicken Sandwich","price": 279, "serves": 1, "flavours": 1, "dips": 0, "desc": "Crispy fillet, pickles, house mayo, brioche bun." },
+        { "id": "s2",  "name": "Korean Q Sandwich",       "price": 299, "serves": 1, "flavours": 0, "dips": 0, "desc": "Gochujang-glazed fillet, slaw, sesame, brioche bun.", "badge": "New" }
+      ]
+    },
+    {
+      "id": "sides",
+      "name": "Sides",
+      "tagline": "Never optional.",
+      "items": [
+        { "id": "f1", "name": "Seasoned Fries — Regular", "price": 129, "serves": 1, "flavours": 0, "dips": 0, "desc": "Hand-cut, tossed in the house seasoning." },
+        { "id": "f2", "name": "Seasoned Fries — Large",   "price": 189, "serves": 2, "flavours": 0, "dips": 0, "desc": "The same, but the correct amount.", "badge": "Fan favourite" },
+        { "id": "f3", "name": "Loaded Cheese Fries",      "price": 229, "serves": 1, "flavours": 0, "dips": 0, "desc": "Fries, cheese sauce, jalapeño, spring onion." },
+        { "id": "f4", "name": "Cajun Fried Corn — 3 pc",  "price": 149, "serves": 1, "flavours": 0, "dips": 0, "desc": "Fried corn ribs in cajun rub." },
+        { "id": "f5", "name": "Veggie Sticks",            "price": 99,  "serves": 1, "flavours": 0, "dips": 0, "desc": "Carrot and celery. For the heat, mostly." }
+      ]
+    },
+    {
+      "id": "dipsdrinks",
+      "name": "Dips & Drinks",
+      "tagline": "Cool it down.",
+      "items": [
+        { "id": "d1", "name": "Ranch Dip",          "price": 49,  "serves": 1, "flavours": 0, "dips": 0, "desc": "House buttermilk ranch." },
+        { "id": "d2", "name": "Blue Cheese Dip",    "price": 59,  "serves": 1, "flavours": 0, "dips": 0, "desc": "Thick, funky, correct." },
+        { "id": "d3", "name": "Honey Mustard Dip",  "price": 49,  "serves": 1, "flavours": 0, "dips": 0, "desc": "Sweet and sharp." },
+        { "id": "d4", "name": "Cheese Sauce",       "price": 59,  "serves": 1, "flavours": 0, "dips": 0, "desc": "Warm, molten, dangerous." },
+        { "id": "d5", "name": "Chilli Mayo",        "price": 49,  "serves": 1, "flavours": 0, "dips": 0, "desc": "House chilli mayo." },
+        { "id": "b1", "name": "Soft Drink — 250ml", "price": 60,  "serves": 1, "flavours": 0, "dips": 0, "desc": "Coke, Sprite or Thums Up." },
+        { "id": "b2", "name": "Masala Lemonade",    "price": 99,  "serves": 1, "flavours": 0, "dips": 0, "desc": "Fresh lime, black salt, soda." },
+        { "id": "b3", "name": "Iced Tea",           "price": 110, "serves": 1, "flavours": 0, "dips": 0, "desc": "Peach or lemon." },
+        { "id": "b4", "name": "Packaged Water",     "price": 20,  "serves": 1, "flavours": 0, "dips": 0, "desc": "1 litre." }
+      ]
+    }
+  ]
+}
