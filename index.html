@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>WING'D — Wing Experts, Bandra West</title>
+<meta name="description" content="WING'D. Double-fried chicken wings in 15 flavours, from Plain to Atomic. Order delivery, takeaway or dine-in from Bandra West, Mumbai.">
+<meta name="theme-color" content="#0E0C0A">
+<meta property="og:title" content="WING'D — Wing Experts, Bandra West">
+<meta property="og:description" content="Double-fried wings in 15 flavours. Delivery, takeaway and dine-in from Bandra West, Mumbai.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230E0C0A'/><text x='50' y='72' font-size='62' font-family='Impact,sans-serif' fill='%23F2B705' text-anchor='middle'>W</text></svg>">
+<style>
+/* ---------- hero ---------- */
+.hero{min-height:100svh;display:flex;align-items:center;padding:120px 0 70px;position:relative;z-index:2;overflow:hidden}
+.hero::before{
+  content:"";position:absolute;inset:auto -20% -45% -20%;height:80%;
+  background:radial-gradient(ellipse at 50% 50%, rgba(242,183,5,.16), transparent 62%);
+  pointer-events:none
+}
+.herogrid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,70px);align-items:center}
+.herotitle{font-size:clamp(3.3rem,12.5vw,10.5rem);margin:16px 0 0}
+.herotitle .o{color:transparent;-webkit-text-stroke:2px var(--turmeric)}
+.herotitle .r{color:var(--chilli)}
+.herosub{max-width:46ch;color:var(--bone-dim);font-size:clamp(1rem,1.6vw,1.14rem);margin-top:22px}
+.herocta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.herostats{display:flex;flex-wrap:wrap;gap:28px;margin-top:44px;padding-top:26px;border-top:1px solid var(--line)}
+.herostats div b{display:block;font-family:'Anton',sans-serif;font-size:1.9rem;line-height:1;color:var(--turmeric)}
+.herostats div span{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bone-dim);font-family:'JetBrains Mono',monospace}
+
+/* ---------- wing build ---------- */
+.build{position:relative}
+.stage{
+  position:relative;aspect-ratio:1;width:100%;max-width:520px;margin-inline:auto;
+  border:1px solid var(--line);border-radius:24px;
+  background:
+    radial-gradient(circle at 50% 55%, rgba(242,183,5,.09), transparent 60%),
+    linear-gradient(180deg,var(--char-2),var(--char));
+  overflow:hidden
+}
+.stage::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:44px 44px;opacity:.35
+}
+.stage svg{position:absolute;inset:0;width:100%;height:100%}
+.lyr{opacity:0;transform:translateY(26px) scale(.94);transform-origin:50% 62%}
+.playing .lyr{animation:layerIn .62s var(--ease) forwards}
+.playing .lyr:nth-child(1){animation-delay:.10s}
+.playing .lyr:nth-child(2){animation-delay:.62s}
+.playing .lyr:nth-child(3){animation-delay:1.14s}
+.playing .lyr:nth-child(4){animation-delay:1.66s}
+.playing .lyr:nth-child(5){animation-delay:2.18s}
+.playing .lyr:nth-child(6){animation-delay:2.70s}
+.playing .lyr:nth-child(7){animation-delay:3.22s}
+.playing .lyr:nth-child(8){animation-delay:3.74s}
+@keyframes layerIn{to{opacity:1;transform:none}}
+
+.steps{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:2px}
+.steps li{
+  display:flex;align-items:center;gap:14px;padding:9px 12px;border-radius:9px;
+  font-family:'JetBrains Mono',monospace;font-size:.79rem;letter-spacing:.04em;
+  color:#6D675D;transition:color .35s,background .35s;text-transform:uppercase
+}
+.steps li .n{color:var(--line-2);font-size:.7rem;min-width:22px}
+.steps li.lit{color:var(--bone);background:rgba(245,239,227,.05)}
+.steps li.lit .n{color:var(--turmeric)}
+.replay{margin-top:20px}
+
+/* ---------- heat ---------- */
+.heatrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:34px}
+.heatbtn{
+  border:1px solid var(--line-2);border-radius:12px;padding:18px 12px;text-align:center;
+  transition:border-color .25s,background .25s,transform .2s var(--ease);
+}
+.heatbtn:hover{transform:translateY(-3px)}
+.heatbtn .flames{font-size:.95rem;letter-spacing:2px;display:block;margin-bottom:8px;filter:grayscale(1);opacity:.45;transition:.25s}
+.heatbtn .nm{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:1.02rem;display:block;line-height:1.1}
+.heatbtn.on{border-color:var(--accent);background:rgba(245,239,227,.05)}
+.heatbtn.on .flames{filter:none;opacity:1}
+.heatpanel{
+  border:1px solid var(--line);border-radius:var(--r);padding:clamp(22px,3vw,38px);
+  background:linear-gradient(160deg,var(--char-3),var(--char-2));
+  display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,3vw,40px);align-items:center
+}
+.heatnum{font-family:'Anton',sans-serif;font-size:clamp(3.6rem,10vw,7rem);line-height:.8;color:var(--accent)}
+.heatpanel h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(1.5rem,3.6vw,2.4rem);margin-bottom:8px}
+.heatpanel p{color:var(--bone-dim);margin:0;max-width:56ch}
+.heatmeta{display:flex;gap:22px;margin-top:16px;flex-wrap:wrap}
+.heatmeta span{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bone-dim)}
+.heatmeta b{color:var(--bone)}
+
+/* ---------- menu preview ---------- */
+.previewgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:14px}
+.pcard{
+  border:1px solid var(--line);border-radius:var(--r);padding:24px;
+  background:linear-gradient(170deg,var(--char-2),var(--char));
+  display:flex;flex-direction:column;gap:10px;
+  transition:border-color .25s,transform .25s var(--ease)
+}
+.pcard:hover{border-color:var(--line-2);transform:translateY(-4px)}
+.pcard h4{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:1.28rem;line-height:1.05}
+.pcard p{color:var(--bone-dim);font-size:.88rem;margin:0;flex:1}
+.pcard .pr{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--turmeric);font-size:1.05rem}
+.tag{
+  align-self:flex-start;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;
+  text-transform:uppercase;padding:5px 10px;border-radius:100px;background:var(--chilli);color:#fff
+}
+
+/* ---------- find us ---------- */
+.findgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.findcell{padding:clamp(24px,3vw,38px);background:var(--char-2);outline:1px solid var(--line)}
+.findcell h4{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.findcell p{font-size:1.05rem;margin:0;line-height:1.5}
+.findcell a{color:var(--bone);border-bottom:1px solid var(--line-2)}
+
+@media (max-width:940px){
+  .herogrid{grid-template-columns:1fr}
+  .build{order:-1}
+  .stage{max-width:400px}
+  .heatpanel{grid-template-columns:1fr;text-align:left}
+}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="nav">
+  <a class="brand" href="index.html">
+    <span class="dot" aria-hidden="true"></span>
+    <span class="mark">WING<span>'</span>D</span>
+  </a>
+  <div class="navlinks">
+    <a href="#build">The Build</a>
+    <a href="#heat">Heat Scale</a>
+    <a href="menu.html">Menu</a>
+    <a href="#find">Find Us</a>
+  </div>
+  <a class="btn btn-primary" href="menu.html">Order Now</a>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <div class="wrap herogrid">
+    <div>
+      <p class="eyebrow">Bandra West · Mumbai · Est. 2026</p>
+      <h1 class="display herotitle">WING<span class="o">'</span><span class="r">D</span></h1>
+      <p class="herosub">Brined twelve hours. Double-fried to order. Tossed or dry-rubbed in fifteen flavours that run from <b style="color:var(--bone)">Plain</b> to <b style="color:var(--chilli)">Atomic</b>. Nothing sits under a heat lamp.</p>
+      <div class="herocta">
+        <a class="btn btn-primary" href="menu.html">See the full menu</a>
+        <a class="btn btn-ghost" href="#heat">Pick your heat</a>
+      </div>
+      <div class="herostats">
+        <div><b>15</b><span>Flavours</span></div>
+        <div><b>2×</b><span>Fried</span></div>
+        <div><b>12h</b><span>Brine</span></div>
+        <div><b>18′</b><span>Avg. prep</span></div>
+      </div>
+    </div>
+
+    <div class="build" id="build">
+      <div class="stage playing" id="stage">
+        <svg viewBox="0 0 400 400" role="img" aria-label="A chicken wing being assembled layer by layer">
+          <defs>
+            <linearGradient id="gFry" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#E8A63C"/><stop offset="100%" stop-color="#B96B18"/>
+            </linearGradient>
+            <linearGradient id="gSauce" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="var(--accent)"/><stop offset="100%" stop-color="#8E1B1B"/>
+            </linearGradient>
+            <clipPath id="clipBody">
+              <path d="M200 146c42 0 70 40 78 88 10 62-28 118-78 118s-88-56-78-118c8-48 36-88 78-88Z"/>
+            </clipPath>
+          </defs>
+
+          <!-- 1 bone -->
+          <g class="lyr">
+            <rect x="187" y="58" width="26" height="108" rx="13" fill="#E9E1D2"/>
+            <circle cx="185" cy="62" r="18" fill="#F5EFE3"/>
+            <circle cx="215" cy="62" r="18" fill="#F5EFE3"/>
+          </g>
+          <!-- 2 meat -->
+          <g class="lyr">
+            <path d="M200 146c42 0 70 40 78 88 10 62-28 118-78 118s-88-56-78-118c8-48 36-88 78-88Z" fill="#C97C72"/>
+          </g>
+          <!-- 3 brine -->
+          <g class="lyr" clip-path="url(#clipBody)">
+            <path d="M200 146c42 0 70 40 78 88 10 62-28 118-78 118s-88-56-78-118c8-48 36-88 78-88Z" fill="#F5EFE3" opacity=".18"/>
+            <circle cx="150" cy="230" r="7" fill="#F5EFE3" opacity=".3"/>
+            <circle cx="252" cy="286" r="5" fill="#F5EFE3" opacity=".3"/>
+            <circle cx="196" cy="196" r="4" fill="#F5EFE3" opacity=".3"/>
+          </g>
+          <!-- 4 dredge -->
+          <g class="lyr" clip-path="url(#clipBody)">
+            <path d="M200 146c42 0 70 40 78 88 10 62-28 118-78 118s-88-56-78-118c8-48 36-88 78-88Z" fill="#E4CDA0"/>
+          </g>
+          <!-- 5 double fry -->
+          <g class="lyr" clip-path="url(#clipBody)">
+            <path d="M200 146c42 0 70 40 78 88 10 62-28 118-78 118s-88-56-78-118c8-48 36-88 78-88Z" fill="url(#gFry)"/>
+            <path d="M118 218c30 16 54-10 86 4s52-6 82 10" stroke="#D9913A" stroke-width="7" fill="none" opacity=".6" stroke-linecap="round"/>
+            <path d="M112 268c34 12 56-12 88 2s54-4 88 12" stroke="#D9913A" stroke-width="7" fill="none" opacity=".5" stroke-linecap="round"/>
+          </g>
+          <!-- 6 flame char -->
+          <g class="lyr" clip-path="url(#clipBody)">
+            <ellipse cx="164" cy="212" rx="19" ry="11" fill="#4A2A10" opacity=".6" transform="rotate(-18 164 212)"/>
+            <ellipse cx="252" cy="262" rx="26" ry="14" fill="#4A2A10" opacity=".55" transform="rotate(12 252 262)"/>
+            <ellipse cx="190" cy="320" rx="24" ry="12" fill="#4A2A10" opacity=".5"/>
+          </g>
+          <!-- 7 sauce / rub -->
+          <g class="lyr" clip-path="url(#clipBody)">
+            <path d="M100 236c26-22 48 6 74-8s44 12 70-2 44 8 56-2v130H100Z" fill="url(#gSauce)" opacity=".92" id="sauceLayer"/>
+          </g>
+          <!-- 8 garnish -->
+          <g class="lyr" clip-path="url(#clipBody)">
+            <g fill="#F5EFE3" opacity=".92">
+              <ellipse cx="160" cy="278" rx="5" ry="3" transform="rotate(24 160 278)"/>
+              <ellipse cx="214" cy="300" rx="5" ry="3" transform="rotate(-14 214 300)"/>
+              <ellipse cx="258" cy="266" rx="5" ry="3" transform="rotate(40 258 266)"/>
+              <ellipse cx="188" cy="252" rx="5" ry="3" transform="rotate(-30 188 252)"/>
+              <ellipse cx="236" cy="326" rx="5" ry="3" transform="rotate(8 236 326)"/>
+            </g>
+            <g fill="#5C8F3A">
+              <ellipse cx="176" cy="312" rx="9" ry="4" transform="rotate(-22 176 312)"/>
+              <ellipse cx="246" cy="292" rx="9" ry="4" transform="rotate(34 246 292)"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <ol class="steps" id="steps">
+        <li><span class="n">01</span> Bone in, always</li>
+        <li><span class="n">02</span> Whole-cut chicken</li>
+        <li><span class="n">03</span> 12-hour buttermilk brine</li>
+        <li><span class="n">04</span> Seasoned dredge</li>
+        <li><span class="n">05</span> Double fry, 190°C</li>
+        <li><span class="n">06</span> Open flame char</li>
+        <li><span class="n">07</span> Sauce or dry rub</li>
+        <li><span class="n">08</span> Sesame + coriander</li>
+      </ol>
+      <button class="btn btn-ghost replay" id="replay" type="button">↻ Replay build</button>
+    </div>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Double fried</span><span>·</span><span>15 flavours</span><span>·</span><span>Cooked to order</span><span>·</span><span>Bandra West</span><span>·</span><span>Delivery + takeaway</span><span>·</span>
+    <span>Double fried</span><span>·</span><span>15 flavours</span><span>·</span><span>Cooked to order</span><span>·</span><span>Bandra West</span><span>·</span><span>Delivery + takeaway</span><span>·</span>
+  </div>
+</div>
+
+<!-- ================= HEAT ================= -->
+<section class="sec" id="heat">
+  <div class="wrap">
+    <div class="sechead rv">
+      <div>
+        <p class="eyebrow">The Heat Scale</p>
+        <h2 class="display">How much<br>can you take?</h2>
+      </div>
+      <p>Every flavour on the menu sits somewhere on this ladder. Pick a rung — the whole page moves with you.</p>
+    </div>
+
+    <div class="heatrow rv" id="heatrow" role="tablist" aria-label="Heat levels"></div>
+
+    <div class="heatpanel rv">
+      <div class="heatnum mono" id="heatnum">0</div>
+      <div>
+        <h3 id="heatname">Plain</h3>
+        <p id="heatdesc">No sauce, no rub. Just the fry.</p>
+        <div class="heatmeta">
+          <span>Type · <b id="heattype">Naked</b></span>
+          <span>Flavours at this level · <b id="heatcount">1</b></span>
+          <span>Rating · <b id="heatflames">—</b></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MENU PREVIEW ================= -->
+<section class="sec" id="menu" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sechead rv">
+      <div>
+        <p class="eyebrow">The Menu</p>
+        <h2 class="display">Start here</h2>
+      </div>
+      <p>Combos, group packs, wings by the piece, tenders, sandwiches and sides — the whole board is one tap away, with delivery, takeaway and dine-in built in.</p>
+    </div>
+    <div class="previewgrid rv" id="preview"></div>
+    <div style="margin-top:34px">
+      <a class="btn btn-accent" href="menu.html">Open the full menu &amp; order →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FIND US ================= -->
+<section class="sec" id="find" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sechead rv">
+      <div>
+        <p class="eyebrow">Find Us</p>
+        <h2 class="display">Bandra West</h2>
+      </div>
+      <p>Walk in, call ahead, or get it sent. Kitchen closes when the fryers do.</p>
+    </div>
+    <div class="findgrid rv">
+      <div class="findcell"><h4>Address</h4><p id="fAddr">Bandra West, Mumbai 400050</p></div>
+      <div class="findcell"><h4>Hours</h4><p id="fHours">12:00 PM – 1:00 AM, every day</p></div>
+      <div class="findcell"><h4>Order by phone</h4><p><a id="fPhone" href="#">+91 87075 46331</a></p></div>
+      <div class="findcell"><h4>Instagram</h4><p><a id="fIg" href="https://instagram.com/wingd.co" target="_blank" rel="noopener">@wingd.co</a></p></div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="footgrid">
+      <div>
+        <h4>Order</h4>
+        <a href="menu.html">Full menu</a>
+        <a href="menu.html#combos">Combos</a>
+        <a href="menu.html#packs">Group packs</a>
+        <a href="menu.html#wings">Wings by the piece</a>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="#build">The build</a>
+        <a href="#heat">Heat scale</a>
+        <a href="#find">Find us</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a id="fWa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+        <a id="fPhone2" href="#">Call the store</a>
+        <a href="https://instagram.com/wingd.co" target="_blank" rel="noopener">Instagram</a>
+      </div>
+      <div>
+        <h4>Kitchen</h4>
+        <a href="#build">How a wing is built</a>
+        <a href="menu.html#flavours">All 15 flavours</a>
+      </div>
+    </div>
+    <div class="footmark display">WING'D</div>
+    <p class="legal">
+      © <span id="yr"></span> WING'D, Bandra West, Mumbai. Site built by DreamKey Automation.<br>
+      Menu items, prices, hours and contact details are configured in <code>menu.json</code> and must be confirmed against the store's live till before publishing. Images and copy are illustrative.
+    </p>
+  </div>
+</footer>
+
+<script>
+/* ---------------- year ---------------- */
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ---------------- reveal ---------------- */
+const io = new IntersectionObserver((es)=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* ---------------- wing build animation ---------------- */
+const stage = document.getElementById('stage');
+const stepEls = [...document.querySelectorAll('#steps li')];
+const DELAYS = [100,620,1140,1660,2180,2700,3220,3740];
+let timers = [];
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function runBuild(){
+  timers.forEach(clearTimeout); timers = [];
+  stepEls.forEach(li=>li.classList.remove('lit'));
+  if(reduce){ stepEls.forEach(li=>li.classList.add('lit')); return; }
+  stage.classList.remove('playing');
+  void stage.offsetWidth;               // force reflow so the animation restarts
+  stage.classList.add('playing');
+  DELAYS.forEach((d,i)=>{
+    timers.push(setTimeout(()=>stepEls[i] && stepEls[i].classList.add('lit'), d + 180));
+  });
+}
+document.getElementById('replay').addEventListener('click', runBuild);
+runBuild();
+
+/* ---------------- data-driven bits ---------------- */
+const FLAME='◆';
+fetch('menu.json?v=2').then(r=>r.json()).then(data=>{
+  /* --- store details --- */
+  const s = data.store;
+  document.getElementById('fAddr').textContent  = s.address;
+  document.getElementById('fHours').textContent = s.hours;
+  const telHref = 'tel:' + s.phone.replace(/[^\d+]/g,'');
+  ['fPhone','fPhone2'].forEach(id=>{
+    const el = document.getElementById(id);
+    el.href = telHref;
+    if(id==='fPhone') el.textContent = s.phone;
+  });
+  document.getElementById('fWa').href = 'https://wa.me/' + s.whatsapp;
+  const ig = document.getElementById('fIg');
+  ig.href = s.instagram; ig.textContent = '@' + s.instagram.split('/').filter(Boolean).pop();
+
+  /* --- heat scale --- */
+  const levels = [0,1,2,3,4,5];
+  const names  = {0:'No heat',1:'Warm',2:'Building',3:'Hot',4:'Serious',5:'Atomic'};
+  const row = document.getElementById('heatrow');
+  const byLevel = l => data.flavours.filter(f=>f.heat===l);
+
+  levels.forEach(l=>{
+    const b = document.createElement('button');
+    b.type='button'; b.className='heatbtn'; b.dataset.level=l; b.setAttribute('role','tab');
+    b.innerHTML = `<span class="flames">${'🔥'.repeat(Math.max(l,1)).slice(0, l===0?0:undefined) || '○'}</span>
+                   <span class="nm">${names[l]}</span>`;
+    b.addEventListener('click',()=>setHeat(l));
+    row.appendChild(b);
+  });
+
+  const HUE = {0:'#F5EFE3',1:'#F2B705',2:'#F0930C',3:'#FF6B1A',4:'#E03C10',5:'#D62828'};
+  function setHeat(l){
+    document.querySelectorAll('.heatbtn').forEach(b=>b.classList.toggle('on', +b.dataset.level===l));
+    const list = byLevel(l);
+    const pick = list[0] || {name:'—',note:'',type:'—'};
+    document.documentElement.style.setProperty('--accent', HUE[l]);
+    const sauce = document.getElementById('sauceLayer');
+    if(sauce) sauce.setAttribute('fill', HUE[l]);
+    document.getElementById('heatnum').textContent  = l;
+    document.getElementById('heatname').textContent = list.map(f=>f.name).join(' · ') || pick.name;
+    document.getElementById('heatdesc').textContent = pick.note;
+    document.getElementById('heattype').textContent = [...new Set(list.map(f=>f.type))].join(' / ') || '—';
+    document.getElementById('heatcount').textContent= list.length;
+    document.getElementById('heatflames').textContent = l===0 ? 'No heat' : FLAME.repeat(l);
+  }
+  setHeat(3);
+
+  /* --- menu preview: one highlight from each of the first four categories --- */
+  const prev = document.getElementById('preview');
+  data.categories.slice(0,4).forEach(cat=>{
+    const item = cat.items.find(i=>i.badge) || cat.items[0];
+    const el = document.createElement('a');
+    el.className='pcard'; el.href='menu.html#'+cat.id;
+    el.innerHTML = `
+      ${item.badge?`<span class="tag">${item.badge}</span>`:''}
+      <h4>${item.name}</h4>
+      <p>${item.desc}</p>
+      <div class="pr">${s.currency}${item.price}</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bone-dim)">${cat.name} →</div>`;
+    prev.appendChild(el);
+  });
+}).catch(err=>{
+  console.error('menu.json failed to load', err);
+  document.getElementById('preview').innerHTML =
+    '<p style="color:var(--bone-dim)">Menu is loading elsewhere — <a href="menu.html" style="color:var(--turmeric)">open the full menu</a>.</p>';
+});
+</script>
+</body>
+</html>
