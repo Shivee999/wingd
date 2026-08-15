@@ -1,8 +1,8 @@
 {
-  "_readme": "EDIT THIS FILE TO CHANGE THE MENU. Nothing else needs touching. Prices are in INR. All prices below are PLACEHOLDERS set to plausible Mumbai QSR levels — replace them with WING'D's real till prices before this goes to customers. 'whatsapp' must be changed to the WING'D store number (country code, no + or spaces).",
+  "_readme": "WING'D menu — transcribed from WINGD_Menu_Print.pdf (Aug 2026). Prices are exactly as printed. Edit this file to change the menu; nothing else needs touching. 'whatsapp' MUST be changed to the WING'D store number (country code, digits only, no + or spaces).",
   "store": {
     "name": "WING'D",
-    "tagline": "Wing experts. Bandra West.",
+    "tagline": "The perfect wing does exist.",
     "whatsapp": "918707546331",
     "whatsappNote": "PLACEHOLDER — currently routes to Shive. Replace with the WING'D store number.",
     "phone": "+91 87075 46331",
@@ -13,116 +13,124 @@
     "currency": "₹",
     "deliveryRadiusKm": 6,
     "deliveryFee": 49,
-    "freeDeliveryAbove": 799,
+    "freeDeliveryAbove": 999,
     "packagingFee": 20,
     "gstPercent": 5,
     "minOrder": 199,
     "prepTimeMins": "18–25",
-    "swiggy": "",
-    "zomato": "",
     "orderTypes": ["Delivery", "Takeaway", "Dine-in"]
   },
-  "flavours": [
-    { "id": "plain",      "name": "Plain",                "heat": 0, "type": "Naked",   "note": "No sauce, no rub. Just the fry." },
-    { "id": "garlic-parm","name": "Garlic Parmesan",      "heat": 0, "type": "Wet",     "note": "Creamy, savoury, heavy on the garlic." },
-    { "id": "lemon-pep",  "name": "Lemon Pepper",         "heat": 1, "type": "Dry rub", "note": "The bestseller. Zesty, sharp, no mess." },
-    { "id": "hawaiian",   "name": "Hawaiian",             "heat": 1, "type": "Wet",     "note": "Sweet island citrus glaze." },
-    { "id": "mild",       "name": "Mild",                 "heat": 1, "type": "Wet",     "note": "Buttery buffalo, dialled down." },
-    { "id": "bbq",        "name": "Hickory Smoked BBQ",   "heat": 1, "type": "Wet",     "note": "Smoky, sticky, crowd-safe." },
-    { "id": "bombay",     "name": "Bombay Masala Dust",   "heat": 2, "type": "Dry rub", "note": "House rub. Amchur, jeera, kasuri methi.", "house": true },
-    { "id": "hot-honey",  "name": "Hot Honey Rub",        "heat": 2, "type": "Dry rub", "note": "Sweet up front, slow burn after." },
-    { "id": "louisiana",  "name": "Louisiana Rub",        "heat": 2, "type": "Dry rub", "note": "Cajun rub with a buffalo finish." },
-    { "id": "original",   "name": "Original Hot",         "heat": 3, "type": "Wet",     "note": "The classic buffalo benchmark." },
-    { "id": "korean-q",   "name": "Spicy Korean Q",       "heat": 3, "type": "Wet",     "note": "Gochujang, soy, sesame, ginger." },
-    { "id": "kashmiri",   "name": "Kashmiri Chilli Rub",  "heat": 3, "type": "Dry rub", "note": "House rub. Colour of a sunset, heat of a slap.", "house": true },
-    { "id": "cajun",      "name": "Cajun",                "heat": 4, "type": "Wet",     "note": "Original Hot tossed in Louisiana rub." },
-    { "id": "mango-hab",  "name": "Mango Habanero",       "heat": 4, "type": "Wet",     "note": "Sweet mango, then habanero freight train." },
-    { "id": "atomic",     "name": "Atomic",               "heat": 5, "type": "Wet",     "note": "Signed waiver energy. Do not touch your eyes." }
+  "sauces": [
+    { "id": "garlic-parmesan", "name": "Garlic Parmesan",         "note": "Buttery garlic sauce finished with rich parmesan cheese." },
+    { "id": "lemon-butter",    "name": "Lemon Butter",            "note": "Zesty lemon, cracked black pepper, buttery seasoning." },
+    { "id": "mango-peach",     "name": "Mango & Peach Glaze",     "note": "Sweet and tangy mango-peach chilli, glossy fruity finish." },
+    { "id": "korean",          "name": "Korean",                  "note": "Sticky spicy-sweet Korean gochujang glaze." },
+    { "id": "hawaiian-hab",    "name": "Hawaiian Habanero",       "note": "Pineapple sauce with a fiery habanero kick." },
+    { "id": "hickory-bbq",     "name": "Hickory Smoked BBQ",      "note": "Smokey hickory BBQ glaze with a rich, charred finish." },
+    { "id": "texas-buffalo",   "name": "Texas Buffalo",           "note": "Bold, buttery Texas-style buffalo. Spicy and tangy." },
+    { "id": "cajun-rub",       "name": "Louisiana Cajun Dry Rub", "note": "Southern-style zesty cajun dry rub. Fiery, flavourful." }
   ],
   "dips": [
-    { "id": "ranch",   "name": "Ranch",        "price": 49 },
-    { "id": "bluechz", "name": "Blue Cheese",  "price": 59 },
-    { "id": "honeymus","name": "Honey Mustard","price": 49 },
-    { "id": "cheese",  "name": "Cheese Sauce", "price": 59 },
-    { "id": "chillimayo","name": "Chilli Mayo","price": 49 }
+    { "id": "ranch",         "name": "Ranch",              "price": 50 },
+    { "id": "fiery-pepper",  "name": "Fiery Pepper",       "price": 50 },
+    { "id": "honey-mustard", "name": "Honey Mustard",      "price": 50 },
+    { "id": "chili-truffle", "name": "Chili Truffle Sauce","price": 50 }
   ],
   "categories": [
     {
-      "id": "combos",
-      "name": "Combos",
-      "tagline": "One person, one tray, done.",
-      "items": [
-        { "id": "c6",  "name": "6 pc Wing Combo",       "price": 399, "serves": 1, "flavours": 1, "dips": 1, "desc": "6 classic or boneless wings, 1 flavour, 1 dip, regular fries, 250ml drink.", "badge": "Most ordered" },
-        { "id": "c8",  "name": "8 pc Wing Combo",       "price": 489, "serves": 1, "flavours": 2, "dips": 1, "desc": "8 classic or boneless wings, up to 2 flavours, 1 dip, regular fries, 250ml drink." },
-        { "id": "c10", "name": "10 pc Wing Combo",      "price": 569, "serves": 1, "flavours": 2, "dips": 1, "desc": "10 classic or boneless wings, up to 2 flavours, 1 dip, regular fries, 250ml drink." },
-        { "id": "ct3", "name": "3 pc Tender Combo",     "price": 349, "serves": 1, "flavours": 1, "dips": 1, "desc": "3 crispy tenders, 1 flavour, 1 dip, regular fries, 250ml drink." },
-        { "id": "ct5", "name": "5 pc Tender Combo",     "price": 449, "serves": 1, "flavours": 2, "dips": 1, "desc": "5 crispy tenders, up to 2 flavours, 1 dip, regular fries, 250ml drink." },
-        { "id": "csw", "name": "Chicken Sandwich Combo","price": 389, "serves": 1, "flavours": 1, "dips": 1, "desc": "Crispy chicken sandwich in your flavour, regular fries, 250ml drink." }
-      ]
-    },
-    {
-      "id": "packs",
-      "name": "Group Packs",
-      "tagline": "Match nights, birthdays, and bad decisions.",
-      "items": [
-        { "id": "p15", "name": "15 pc Meal for Two",   "price": 899,  "serves": 2,   "flavours": 2, "dips": 2, "desc": "15 classic or boneless wings, up to 2 flavours, 2 dips, large fries, 2 drinks." },
-        { "id": "p20", "name": "20 pc Party Pack",     "price": 1149, "serves": "2–3","flavours": 3, "dips": 3, "desc": "20 wings, up to 3 flavours, 3 dips, large fries, 3 pc cajun corn.", "badge": "Best value" },
-        { "id": "p30", "name": "30 pc Crew Pack",      "price": 1649, "serves": "4–5","flavours": 3, "dips": 3, "desc": "30 wings, up to 3 flavours, 3 dips, large fries, veggie sticks." },
-        { "id": "p40", "name": "40 pc Game Day Pack",  "price": 2099, "serves": "5–6","flavours": 4, "dips": 4, "desc": "40 wings, up to 4 flavours, 4 dips, large fries, 2 veggie sticks." },
-        { "id": "p50", "name": "50 pc Big Night Pack", "price": 2549, "serves": "6–9","flavours": 4, "dips": 4, "desc": "50 wings, up to 4 flavours, 4 dips, 2 large fries, 2 veggie sticks." }
-      ]
-    },
-    {
       "id": "wings",
-      "name": "Wings By The Piece",
-      "tagline": "Classic bone-in or boneless. Your call.",
+      "name": "Wings",
+      "tagline": "4PC · 6PC · 8PC",
       "items": [
-        { "id": "w6",  "name": "6 pc Wings",  "price": 279,  "serves": 1,    "flavours": 1, "dips": 0, "desc": "6 wings tossed or rubbed in 1 flavour." },
-        { "id": "w10", "name": "10 pc Wings", "price": 429,  "serves": 1,    "flavours": 2, "dips": 0, "desc": "10 wings, up to 2 flavours." },
-        { "id": "w15", "name": "15 pc Wings", "price": 619,  "serves": 2,    "flavours": 2, "dips": 0, "desc": "15 wings, up to 2 flavours." },
-        { "id": "w20", "name": "20 pc Wings", "price": 789,  "serves": "2–3","flavours": 3, "dips": 0, "desc": "20 wings, up to 3 flavours." },
-        { "id": "w30", "name": "30 pc Wings", "price": 1129, "serves": "4–5","flavours": 3, "dips": 0, "desc": "30 wings, up to 3 flavours." },
-        { "id": "w50", "name": "50 pc Wings", "price": 1799, "serves": "6–9","flavours": 4, "dips": 0, "desc": "50 wings, up to 4 flavours." }
+        { "id": "w-choice", "name": "Wings", "desc": "Choice of your Wing'd sauce.", "sauces": 1,
+          "sizes": [{"label":"4 PC","price":349},{"label":"6 PC","price":479},{"label":"8 PC","price":649}], "badge": "Pick your sauce" },
+        { "id": "w-garlic", "name": "Garlic Parmesan", "desc": "Crispy chicken wings tossed in buttery garlic sauce and finished with rich parmesan cheese.",
+          "sizes": [{"label":"4 PC","price":349},{"label":"6 PC","price":479},{"label":"8 PC","price":649}] },
+        { "id": "w-lemon", "name": "Lemon Butter", "desc": "Crispy wings tossed in zesty lemon, cracked black pepper, buttery seasoning for a bright, tangy kick.",
+          "sizes": [{"label":"4 PC","price":349},{"label":"6 PC","price":479},{"label":"8 PC","price":649}] },
+        { "id": "w-mango", "name": "Mango & Peach Glaze", "desc": "Crispy wings glazed in a sweet and tangy mango-peach chilli sauce with a glossy, fruity finish.",
+          "sizes": [{"label":"4 PC","price":349},{"label":"6 PC","price":479},{"label":"8 PC","price":649}] },
+        { "id": "w-korean", "name": "Korean Chicken Wings", "desc": "Crispy wings coated in a sticky spicy-sweet Korean gochujang glaze.",
+          "sizes": [{"label":"4 PC","price":349},{"label":"6 PC","price":479},{"label":"8 PC","price":649}] },
+        { "id": "w-hawaiian", "name": "Hawaiian Habanero", "desc": "Crispy wings glazed in a pineapple sauce with a fiery habanero kick.",
+          "sizes": [{"label":"4 PC","price":349},{"label":"6 PC","price":479},{"label":"8 PC","price":649}] },
+        { "id": "w-bbq", "name": "Hickory Smoked BBQ", "desc": "Crispy wings coated in a smokey, hickory BBQ glaze with a rich, charred finish.",
+          "sizes": [{"label":"4 PC","price":349},{"label":"6 PC","price":479},{"label":"8 PC","price":649}] },
+        { "id": "w-texas", "name": "Texas Buffalo", "desc": "Crispy chicken wings tossed in a bold, buttery Texas-style buffalo sauce with a spicy, tangy kick.",
+          "sizes": [{"label":"4 PC","price":349},{"label":"6 PC","price":479},{"label":"8 PC","price":649}] },
+        { "id": "w-cajun", "name": "Louisiana Cajun Dry Rub", "desc": "Louisiana cajun dry rub southern-style wings coated in zesty cajun dry rub for fiery flavourful bites.",
+          "sizes": [{"label":"4 PC","price":349},{"label":"6 PC","price":479},{"label":"8 PC","price":649}] }
+      ]
+    },
+    {
+      "id": "boneless",
+      "name": "Boneless",
+      "tagline": "8PC · 10PC · 12PC",
+      "items": [
+        { "id": "b-choice", "name": "Boneless", "desc": "Choice of your Wing'd sauce.", "sauces": 1,
+          "sizes": [{"label":"8 PC","price":349},{"label":"10 PC","price":479},{"label":"12 PC","price":649}] }
+      ]
+    },
+    {
+      "id": "platters",
+      "name": "Platters",
+      "tagline": "Built to share",
+      "items": [
+        { "id": "p-flavourfix", "name": "Flavour Fix Platter", "desc": "12 pieces · 3 flavours · 2 dips.",
+          "price": 949, "sauces": 3, "dips": 2, "badge": "12 pieces" }
       ]
     },
     {
       "id": "tenders",
-      "name": "Tenders & Sandwiches",
-      "tagline": "Boneless, breaded, brined 12 hours.",
+      "name": "Chicken Tenders",
+      "tagline": "3PC · 5PC",
       "items": [
-        { "id": "t3",  "name": "3 pc Crispy Tenders",     "price": 239, "serves": 1, "flavours": 1, "dips": 0, "desc": "3 whole-breast tenders in your flavour." },
-        { "id": "t5",  "name": "5 pc Crispy Tenders",     "price": 369, "serves": 1, "flavours": 2, "dips": 0, "desc": "5 tenders, up to 2 flavours." },
-        { "id": "t10", "name": "10 pc Crispy Tenders",    "price": 699, "serves": "2–3","flavours": 2, "dips": 0, "desc": "10 tenders, up to 2 flavours." },
-        { "id": "s1",  "name": "Classic Chicken Sandwich","price": 279, "serves": 1, "flavours": 1, "dips": 0, "desc": "Crispy fillet, pickles, house mayo, brioche bun." },
-        { "id": "s2",  "name": "Korean Q Sandwich",       "price": 299, "serves": 1, "flavours": 0, "dips": 0, "desc": "Gochujang-glazed fillet, slaw, sesame, brioche bun.", "badge": "New" }
+        { "id": "t-periperi", "name": "Peri-Peri Chicken Tenders", "desc": "Juicy chicken tender tossed in a bold, spicy peri-peri rub with a smokey, tangy kick.",
+          "sizes": [{"label":"3 PC","price":379},{"label":"5 PC","price":599}] },
+        { "id": "t-classic", "name": "Classic Chicken Tenders", "desc": "Tossed in your choice of Wing'd sauce.", "sauces": 1,
+          "sizes": [{"label":"3 PC","price":399},{"label":"5 PC","price":599}] }
+      ]
+    },
+    {
+      "id": "fries",
+      "name": "Fries",
+      "tagline": "Never optional",
+      "items": [
+        { "id": "f-loaded", "name": "Loaded Tender Fries", "desc": "French fries tossed in peri-peri rub, chicken tenders with fiery pepper sauce, cheese sauce & pickled jalapenos.", "price": 479, "badge": "Loaded" },
+        { "id": "f-truffle", "name": "Truffle Parmesan Fries", "desc": "Salted fries with parmesan cheese & truffle sauce.", "price": 379 },
+        { "id": "f-cheesy", "name": "Cheesy Fries", "desc": "Salted fries loaded with cheese sauce on top.", "price": 349 }
       ]
     },
     {
       "id": "sides",
       "name": "Sides",
-      "tagline": "Never optional.",
+      "tagline": "The supporting cast",
       "items": [
-        { "id": "f1", "name": "Seasoned Fries — Regular", "price": 129, "serves": 1, "flavours": 0, "dips": 0, "desc": "Hand-cut, tossed in the house seasoning." },
-        { "id": "f2", "name": "Seasoned Fries — Large",   "price": 189, "serves": 2, "flavours": 0, "dips": 0, "desc": "The same, but the correct amount.", "badge": "Fan favourite" },
-        { "id": "f3", "name": "Loaded Cheese Fries",      "price": 229, "serves": 1, "flavours": 0, "dips": 0, "desc": "Fries, cheese sauce, jalapeño, spring onion." },
-        { "id": "f4", "name": "Cajun Fried Corn — 3 pc",  "price": 149, "serves": 1, "flavours": 0, "dips": 0, "desc": "Fried corn ribs in cajun rub." },
-        { "id": "f5", "name": "Veggie Sticks",            "price": 99,  "serves": 1, "flavours": 0, "dips": 0, "desc": "Carrot and celery. For the heat, mostly." }
+        { "id": "s-wedges", "name": "Salted Potato Wedges", "desc": "Thick-cut wedges, salted.", "price": 349 },
+        { "id": "s-hothoney", "name": "Hot Honey Chilly Potato Wedges", "desc": "Wedges in hot honey and chilli.", "price": 379 },
+        { "id": "s-bricks", "name": "Honey Chipotle Mozzarella Bricks", "desc": "Mozzarella bricks with honey chipotle.", "price": 479 }
       ]
     },
     {
-      "id": "dipsdrinks",
-      "name": "Dips & Drinks",
-      "tagline": "Cool it down.",
+      "id": "dips",
+      "name": "Dips",
+      "tagline": "Any at ₹50",
       "items": [
-        { "id": "d1", "name": "Ranch Dip",          "price": 49,  "serves": 1, "flavours": 0, "dips": 0, "desc": "House buttermilk ranch." },
-        { "id": "d2", "name": "Blue Cheese Dip",    "price": 59,  "serves": 1, "flavours": 0, "dips": 0, "desc": "Thick, funky, correct." },
-        { "id": "d3", "name": "Honey Mustard Dip",  "price": 49,  "serves": 1, "flavours": 0, "dips": 0, "desc": "Sweet and sharp." },
-        { "id": "d4", "name": "Cheese Sauce",       "price": 59,  "serves": 1, "flavours": 0, "dips": 0, "desc": "Warm, molten, dangerous." },
-        { "id": "d5", "name": "Chilli Mayo",        "price": 49,  "serves": 1, "flavours": 0, "dips": 0, "desc": "House chilli mayo." },
-        { "id": "b1", "name": "Soft Drink — 250ml", "price": 60,  "serves": 1, "flavours": 0, "dips": 0, "desc": "Coke, Sprite or Thums Up." },
-        { "id": "b2", "name": "Masala Lemonade",    "price": 99,  "serves": 1, "flavours": 0, "dips": 0, "desc": "Fresh lime, black salt, soda." },
-        { "id": "b3", "name": "Iced Tea",           "price": 110, "serves": 1, "flavours": 0, "dips": 0, "desc": "Peach or lemon." },
-        { "id": "b4", "name": "Packaged Water",     "price": 20,  "serves": 1, "flavours": 0, "dips": 0, "desc": "1 litre." }
+        { "id": "d-ranch", "name": "Ranch", "desc": "House ranch.", "price": 50 },
+        { "id": "d-fiery", "name": "Fiery Pepper", "desc": "Fiery pepper dip.", "price": 50 },
+        { "id": "d-honey", "name": "Honey Mustard", "desc": "Sweet and sharp.", "price": 50 },
+        { "id": "d-truffle", "name": "Chili Truffle Sauce", "desc": "Chilli truffle.", "price": 50 }
+      ]
+    },
+    {
+      "id": "beverages",
+      "name": "Beverages",
+      "tagline": "House sodas",
+      "items": [
+        { "id": "bv-jammin", "name": "Jammin' Red", "desc": "Fresh watermelon, jamun & a fizzy vanilla twist.", "price": 199 },
+        { "id": "bv-pink", "name": "Pink Static", "desc": "Raspberry, pineapple & basil blended into a tropical fizz.", "price": 199 },
+        { "id": "bv-peach", "name": "Peach Mode", "desc": "Refreshing peach iced tea with a bright citrus kick.", "price": 199 },
+        { "id": "bv-sunset", "name": "Sunset Rush", "desc": "Passion fruit, orange & lemongrass topped with a light tropical foam.", "price": 199 }
       ]
     }
   ]
