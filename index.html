@@ -3,455 +3,656 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>WING'D — Wing Experts, Bandra West</title>
-<meta name="description" content="WING'D. Double-fried chicken wings in 15 flavours, from Plain to Atomic. Order delivery, takeaway or dine-in from Bandra West, Mumbai.">
-<meta name="theme-color" content="#0E0C0A">
-<meta property="og:title" content="WING'D — Wing Experts, Bandra West">
-<meta property="og:description" content="Double-fried wings in 15 flavours. Delivery, takeaway and dine-in from Bandra West, Mumbai.">
-<meta property="og:type" content="website">
+<title>WING'D — Bandra West, Mumbai</title>
+<meta name="description" content="WING'D. Wings, boneless, tenders, loaded fries and house sodas in Bandra West, Mumbai. Eight Wing'd sauces. Order delivery, takeaway or dine-in.">
+<meta name="theme-color" content="#EE1C29">
+<meta property="og:title" content="WING'D — Bandra West, Mumbai">
+<meta property="og:description" content="Eight Wing'd sauces. Wings, boneless, tenders, loaded fries and house sodas. Delivery, takeaway and dine-in.">
+<meta property="og:type" content="restaurant.restaurant">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Chango&family=Zilla+Slab:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230E0C0A'/><text x='50' y='72' font-size='62' font-family='Impact,sans-serif' fill='%23F2B705' text-anchor='middle'>W</text></svg>">
-<style>
-/* ---------- hero ---------- */
-.hero{min-height:100svh;display:flex;align-items:center;padding:120px 0 70px;position:relative;z-index:2;overflow:hidden}
-.hero::before{
-  content:"";position:absolute;inset:auto -20% -45% -20%;height:80%;
-  background:radial-gradient(ellipse at 50% 50%, rgba(242,183,5,.16), transparent 62%);
-  pointer-events:none
-}
-.herogrid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,70px);align-items:center}
-.herotitle{font-size:clamp(3.3rem,12.5vw,10.5rem);margin:16px 0 0}
-.herotitle .o{color:transparent;-webkit-text-stroke:2px var(--turmeric)}
-.herotitle .r{color:var(--chilli)}
-.herosub{max-width:46ch;color:var(--bone-dim);font-size:clamp(1rem,1.6vw,1.14rem);margin-top:22px}
-.herocta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
-.herostats{display:flex;flex-wrap:wrap;gap:28px;margin-top:44px;padding-top:26px;border-top:1px solid var(--line)}
-.herostats div b{display:block;font-family:'Anton',sans-serif;font-size:1.9rem;line-height:1;color:var(--turmeric)}
-.herostats div span{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bone-dim);font-family:'JetBrains Mono',monospace}
-
-/* ---------- wing build ---------- */
-.build{position:relative}
-.stage{
-  position:relative;aspect-ratio:1;width:100%;max-width:520px;margin-inline:auto;
-  border:1px solid var(--line);border-radius:24px;
-  background:
-    radial-gradient(circle at 50% 55%, rgba(242,183,5,.09), transparent 60%),
-    linear-gradient(180deg,var(--char-2),var(--char));
-  overflow:hidden
-}
-.stage::after{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
-  background-size:44px 44px;opacity:.35
-}
-.stage svg{position:absolute;inset:0;width:100%;height:100%}
-.lyr{opacity:0;transform:translateY(26px) scale(.94);transform-origin:50% 62%}
-.playing .lyr{animation:layerIn .62s var(--ease) forwards}
-.playing .lyr:nth-child(1){animation-delay:.10s}
-.playing .lyr:nth-child(2){animation-delay:.62s}
-.playing .lyr:nth-child(3){animation-delay:1.14s}
-.playing .lyr:nth-child(4){animation-delay:1.66s}
-.playing .lyr:nth-child(5){animation-delay:2.18s}
-.playing .lyr:nth-child(6){animation-delay:2.70s}
-.playing .lyr:nth-child(7){animation-delay:3.22s}
-.playing .lyr:nth-child(8){animation-delay:3.74s}
-@keyframes layerIn{to{opacity:1;transform:none}}
-
-.steps{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:2px}
-.steps li{
-  display:flex;align-items:center;gap:14px;padding:9px 12px;border-radius:9px;
-  font-family:'JetBrains Mono',monospace;font-size:.79rem;letter-spacing:.04em;
-  color:#6D675D;transition:color .35s,background .35s;text-transform:uppercase
-}
-.steps li .n{color:var(--line-2);font-size:.7rem;min-width:22px}
-.steps li.lit{color:var(--bone);background:rgba(245,239,227,.05)}
-.steps li.lit .n{color:var(--turmeric)}
-.replay{margin-top:20px}
-
-/* ---------- heat ---------- */
-.heatrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:34px}
-.heatbtn{
-  border:1px solid var(--line-2);border-radius:12px;padding:18px 12px;text-align:center;
-  transition:border-color .25s,background .25s,transform .2s var(--ease);
-}
-.heatbtn:hover{transform:translateY(-3px)}
-.heatbtn .flames{font-size:.95rem;letter-spacing:2px;display:block;margin-bottom:8px;filter:grayscale(1);opacity:.45;transition:.25s}
-.heatbtn .nm{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:1.02rem;display:block;line-height:1.1}
-.heatbtn.on{border-color:var(--accent);background:rgba(245,239,227,.05)}
-.heatbtn.on .flames{filter:none;opacity:1}
-.heatpanel{
-  border:1px solid var(--line);border-radius:var(--r);padding:clamp(22px,3vw,38px);
-  background:linear-gradient(160deg,var(--char-3),var(--char-2));
-  display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,3vw,40px);align-items:center
-}
-.heatnum{font-family:'Anton',sans-serif;font-size:clamp(3.6rem,10vw,7rem);line-height:.8;color:var(--accent)}
-.heatpanel h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(1.5rem,3.6vw,2.4rem);margin-bottom:8px}
-.heatpanel p{color:var(--bone-dim);margin:0;max-width:56ch}
-.heatmeta{display:flex;gap:22px;margin-top:16px;flex-wrap:wrap}
-.heatmeta span{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bone-dim)}
-.heatmeta b{color:var(--bone)}
-
-/* ---------- menu preview ---------- */
-.previewgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:14px}
-.pcard{
-  border:1px solid var(--line);border-radius:var(--r);padding:24px;
-  background:linear-gradient(170deg,var(--char-2),var(--char));
-  display:flex;flex-direction:column;gap:10px;
-  transition:border-color .25s,transform .25s var(--ease)
-}
-.pcard:hover{border-color:var(--line-2);transform:translateY(-4px)}
-.pcard h4{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:1.28rem;line-height:1.05}
-.pcard p{color:var(--bone-dim);font-size:.88rem;margin:0;flex:1}
-.pcard .pr{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--turmeric);font-size:1.05rem}
-.tag{
-  align-self:flex-start;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;
-  text-transform:uppercase;padding:5px 10px;border-radius:100px;background:var(--chilli);color:#fff
-}
-
-/* ---------- find us ---------- */
-.findgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-.findcell{padding:clamp(24px,3vw,38px);background:var(--char-2);outline:1px solid var(--line)}
-.findcell h4{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
-.findcell p{font-size:1.05rem;margin:0;line-height:1.5}
-.findcell a{color:var(--bone);border-bottom:1px solid var(--line-2)}
-
-@media (max-width:940px){
-  .herogrid{grid-template-columns:1fr}
-  .build{order:-1}
-  .stage{max-width:400px}
-  .heatpanel{grid-template-columns:1fr;text-align:left}
-}
-</style>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23EE1C29'/><text x='50' y='74' font-size='70' font-family='Impact,sans-serif' fill='%23FCFAC7' text-anchor='middle'>W</text></svg>">
 </head>
 <body>
-<div class="grain" aria-hidden="true"></div>
 
+<!-- ================= NAV ================= -->
 <nav class="nav">
-  <a class="brand" href="index.html">
-    <span class="dot" aria-hidden="true"></span>
-    <span class="mark">WING<span>'</span>D</span>
-  </a>
-  <div class="navlinks">
-    <a href="#build">The Build</a>
-    <a href="#heat">Heat Scale</a>
-    <a href="menu.html">Menu</a>
-    <a href="#find">Find Us</a>
+  <a class="wordmark" href="#home" data-go="home">WING'<span class="d">d</span></a>
+  <div class="tabs" role="tablist">
+    <button class="tab on" data-go="home"   role="tab">Home</button>
+    <button class="tab"    data-go="menu"   role="tab">Menu</button>
+    <button class="tab"    data-go="find"   role="tab">Find Us</button>
   </div>
-  <a class="btn btn-primary" href="menu.html">Order Now</a>
+  <button class="btn btn-black navcart" id="openCart" type="button">
+    Order <span class="n" id="navCount">0</span>
+  </button>
 </nav>
 
-<!-- ================= HERO ================= -->
-<header class="hero" id="top">
-  <div class="wrap herogrid">
-    <div>
-      <p class="eyebrow">Bandra West · Mumbai · Est. 2026</p>
-      <h1 class="display herotitle">WING<span class="o">'</span><span class="r">D</span></h1>
-      <p class="herosub">Brined twelve hours. Double-fried to order. Tossed or dry-rubbed in fifteen flavours that run from <b style="color:var(--bone)">Plain</b> to <b style="color:var(--chilli)">Atomic</b>. Nothing sits under a heat lamp.</p>
-      <div class="herocta">
-        <a class="btn btn-primary" href="menu.html">See the full menu</a>
-        <a class="btn btn-ghost" href="#heat">Pick your heat</a>
-      </div>
-      <div class="herostats">
-        <div><b>15</b><span>Flavours</span></div>
-        <div><b>2×</b><span>Fried</span></div>
-        <div><b>12h</b><span>Brine</span></div>
-        <div><b>18′</b><span>Avg. prep</span></div>
-      </div>
-    </div>
+<main>
 
-    <div class="build" id="build">
-      <div class="stage playing" id="stage">
-        <svg viewBox="0 0 400 400" role="img" aria-label="A chicken wing being assembled layer by layer">
-          <defs>
-            <linearGradient id="gFry" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#E8A63C"/><stop offset="100%" stop-color="#B96B18"/>
-            </linearGradient>
-            <linearGradient id="gSauce" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="var(--accent)"/><stop offset="100%" stop-color="#8E1B1B"/>
-            </linearGradient>
-            <clipPath id="clipBody">
-              <path d="M200 146c42 0 70 40 78 88 10 62-28 118-78 118s-88-56-78-118c8-48 36-88 78-88Z"/>
-            </clipPath>
-          </defs>
+<!-- ================= HOME ================= -->
+<section class="screen on" id="screen-home">
 
-          <!-- 1 bone -->
-          <g class="lyr">
-            <rect x="187" y="58" width="26" height="108" rx="13" fill="#E9E1D2"/>
-            <circle cx="185" cy="62" r="18" fill="#F5EFE3"/>
-            <circle cx="215" cy="62" r="18" fill="#F5EFE3"/>
-          </g>
-          <!-- 2 meat -->
-          <g class="lyr">
-            <path d="M200 146c42 0 70 40 78 88 10 62-28 118-78 118s-88-56-78-118c8-48 36-88 78-88Z" fill="#C97C72"/>
-          </g>
-          <!-- 3 brine -->
-          <g class="lyr" clip-path="url(#clipBody)">
-            <path d="M200 146c42 0 70 40 78 88 10 62-28 118-78 118s-88-56-78-118c8-48 36-88 78-88Z" fill="#F5EFE3" opacity=".18"/>
-            <circle cx="150" cy="230" r="7" fill="#F5EFE3" opacity=".3"/>
-            <circle cx="252" cy="286" r="5" fill="#F5EFE3" opacity=".3"/>
-            <circle cx="196" cy="196" r="4" fill="#F5EFE3" opacity=".3"/>
-          </g>
-          <!-- 4 dredge -->
-          <g class="lyr" clip-path="url(#clipBody)">
-            <path d="M200 146c42 0 70 40 78 88 10 62-28 118-78 118s-88-56-78-118c8-48 36-88 78-88Z" fill="#E4CDA0"/>
-          </g>
-          <!-- 5 double fry -->
-          <g class="lyr" clip-path="url(#clipBody)">
-            <path d="M200 146c42 0 70 40 78 88 10 62-28 118-78 118s-88-56-78-118c8-48 36-88 78-88Z" fill="url(#gFry)"/>
-            <path d="M118 218c30 16 54-10 86 4s52-6 82 10" stroke="#D9913A" stroke-width="7" fill="none" opacity=".6" stroke-linecap="round"/>
-            <path d="M112 268c34 12 56-12 88 2s54-4 88 12" stroke="#D9913A" stroke-width="7" fill="none" opacity=".5" stroke-linecap="round"/>
-          </g>
-          <!-- 6 flame char -->
-          <g class="lyr" clip-path="url(#clipBody)">
-            <ellipse cx="164" cy="212" rx="19" ry="11" fill="#4A2A10" opacity=".6" transform="rotate(-18 164 212)"/>
-            <ellipse cx="252" cy="262" rx="26" ry="14" fill="#4A2A10" opacity=".55" transform="rotate(12 252 262)"/>
-            <ellipse cx="190" cy="320" rx="24" ry="12" fill="#4A2A10" opacity=".5"/>
-          </g>
-          <!-- 7 sauce / rub -->
-          <g class="lyr" clip-path="url(#clipBody)">
-            <path d="M100 236c26-22 48 6 74-8s44 12 70-2 44 8 56-2v130H100Z" fill="url(#gSauce)" opacity=".92" id="sauceLayer"/>
-          </g>
-          <!-- 8 garnish -->
-          <g class="lyr" clip-path="url(#clipBody)">
-            <g fill="#F5EFE3" opacity=".92">
-              <ellipse cx="160" cy="278" rx="5" ry="3" transform="rotate(24 160 278)"/>
-              <ellipse cx="214" cy="300" rx="5" ry="3" transform="rotate(-14 214 300)"/>
-              <ellipse cx="258" cy="266" rx="5" ry="3" transform="rotate(40 258 266)"/>
-              <ellipse cx="188" cy="252" rx="5" ry="3" transform="rotate(-30 188 252)"/>
-              <ellipse cx="236" cy="326" rx="5" ry="3" transform="rotate(8 236 326)"/>
-            </g>
-            <g fill="#5C8F3A">
-              <ellipse cx="176" cy="312" rx="9" ry="4" transform="rotate(-22 176 312)"/>
-              <ellipse cx="246" cy="292" rx="9" ry="4" transform="rotate(34 246 292)"/>
-            </g>
-          </g>
-        </svg>
-      </div>
-
-      <ol class="steps" id="steps">
-        <li><span class="n">01</span> Bone in, always</li>
-        <li><span class="n">02</span> Whole-cut chicken</li>
-        <li><span class="n">03</span> 12-hour buttermilk brine</li>
-        <li><span class="n">04</span> Seasoned dredge</li>
-        <li><span class="n">05</span> Double fry, 190°C</li>
-        <li><span class="n">06</span> Open flame char</li>
-        <li><span class="n">07</span> Sauce or dry rub</li>
-        <li><span class="n">08</span> Sesame + coriander</li>
-      </ol>
-      <button class="btn btn-ghost replay" id="replay" type="button">↻ Replay build</button>
-    </div>
-  </div>
-</header>
-
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-track">
-    <span>Double fried</span><span>·</span><span>15 flavours</span><span>·</span><span>Cooked to order</span><span>·</span><span>Bandra West</span><span>·</span><span>Delivery + takeaway</span><span>·</span>
-    <span>Double fried</span><span>·</span><span>15 flavours</span><span>·</span><span>Cooked to order</span><span>·</span><span>Bandra West</span><span>·</span><span>Delivery + takeaway</span><span>·</span>
-  </div>
-</div>
-
-<!-- ================= HEAT ================= -->
-<section class="sec" id="heat">
-  <div class="wrap">
-    <div class="sechead rv">
+  <header class="hero">
+    <svg class="heroburst" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+      <path fill="#231F20" d="M100 0c6 52 10 62 18 70 8 8 24 12 82 18-58 6-74 10-82 18-8 8-12 24-18 74-6-50-10-66-18-74-8-8-24-12-82-18 58-6 74-10 82-18 8-8 12-18 18-70Z" opacity=".55"/>
+      <path fill="#231F20" d="M158 34c-3 24-5 29-9 33-4 4-11 6-38 9 27 3 34 5 38 9 4 4 6 11 9 35 3-24 5-31 9-35 4-4 11-6 38-9-27-3-34-5-38-9-4-4-6-9-9-33Z" opacity=".3"/>
+    </svg>
+    <div class="wrap herogrid">
       <div>
-        <p class="eyebrow">The Heat Scale</p>
-        <h2 class="display">How much<br>can you take?</h2>
-      </div>
-      <p>Every flavour on the menu sits somewhere on this ladder. Pick a rung — the whole page moves with you.</p>
-    </div>
-
-    <div class="heatrow rv" id="heatrow" role="tablist" aria-label="Heat levels"></div>
-
-    <div class="heatpanel rv">
-      <div class="heatnum mono" id="heatnum">0</div>
-      <div>
-        <h3 id="heatname">Plain</h3>
-        <p id="heatdesc">No sauce, no rub. Just the fry.</p>
-        <div class="heatmeta">
-          <span>Type · <b id="heattype">Naked</b></span>
-          <span>Flavours at this level · <b id="heatcount">1</b></span>
-          <span>Rating · <b id="heatflames">—</b></span>
+        <p class="eyebrow" style="color:var(--black)">Bandra West · Mumbai</p>
+        <h1 class="display">WIN<span class="cream">G'D</span></h1>
+        <p class="claim">
+          <span class="l1">The perfect wing</span>
+          <span class="l2"><span class="strike">doesn't</span> exist</span>
+          <span class="does">Does</span>
+        </p>
+        <p class="herolead">Eight Wing'd sauces, from buttery garlic parmesan to a Louisiana cajun dry rub. Wings, boneless, tenders, loaded fries and house sodas — fried to order, never held.</p>
+        <div class="herocta">
+          <button class="btn btn-black" data-go="menu" type="button">See the menu</button>
+          <button class="btn btn-out-cream" data-go="find" type="button">Find us</button>
         </div>
       </div>
+      <div>
+        <img class="rooster" src="assets/rooster.png" alt="Hand-drawn WING'D rooster">
+      </div>
     </div>
-  </div>
+    <div class="check-cream" aria-hidden="true"></div>
+  </header>
+
+  <!-- how it's made -->
+  <section class="band band-cream">
+    <div class="wrap">
+      <div class="bandhead">
+        <h2 class="display echo" data-echo="THE BUILD" style="color:var(--red)">The Build</h2>
+        <p>Every wing goes through the same five stops before it reaches you. Nothing is pre-sauced, nothing sits under a lamp.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="n">01</span><h4>Brined</h4><p>Whole-cut chicken, brined overnight so the meat stays wet after frying.</p></div>
+        <div class="step"><span class="n">02</span><h4>Dredged</h4><p>Seasoned dredge for the shell that holds sauce without going soft.</p></div>
+        <div class="step"><span class="n">03</span><h4>Double fried</h4><p>Fried once to cook, rested, fried again to order for the crack.</p></div>
+        <div class="step"><span class="n">04</span><h4>Sauced</h4><p>Tossed wet or hit with a dry rub — eight Wing'd sauces, your pick.</p></div>
+        <div class="step"><span class="n">05</span><h4>Boxed hot</h4><p>Vented boxes so steam escapes and the crust survives the ride.</p></div>
+      </div>
+      <div style="margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+        <span class="diptag">Dip<br>happens</span>
+        <p style="margin:0;max-width:38ch;font-size:.92rem">Any dip at ₹50 — Ranch, Fiery Pepper, Honey Mustard, Chili Truffle Sauce.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="check" aria-hidden="true"></div>
+
+  <!-- sauces -->
+  <section class="band band-black">
+    <div class="wrap">
+      <div class="bandhead">
+        <h2 class="display echo" data-echo="THE SAUCES" style="color:var(--red)">The Sauces</h2>
+        <p>Eight of them. Pick one on any Wings, Boneless or Classic Tenders order — or take three at once on the Flavour Fix Platter.</p>
+      </div>
+      <div class="saucegrid" id="sauceWall"></div>
+      <div style="margin-top:34px">
+        <button class="btn btn-cream" data-go="menu" type="button">Order now →</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="check-cream" aria-hidden="true"></div>
 </section>
 
-<!-- ================= MENU PREVIEW ================= -->
-<section class="sec" id="menu" style="border-top:1px solid var(--line)">
-  <div class="wrap">
-    <div class="sechead rv">
-      <div>
-        <p class="eyebrow">The Menu</p>
-        <h2 class="display">Start here</h2>
-      </div>
-      <p>Combos, group packs, wings by the piece, tenders, sandwiches and sides — the whole board is one tap away, with delivery, takeaway and dine-in built in.</p>
+<!-- ================= MENU ================= -->
+<section class="screen" id="screen-menu">
+  <header class="menuhead">
+    <div class="wrap">
+      <p class="eyebrow" style="color:var(--yellow)">The full board</p>
+      <h2 class="display echo" data-echo="MENU">Menu</h2>
+      <div class="menumeta" id="menumeta"></div>
+      <div class="modebar" id="modebar" role="tablist" aria-label="Order type"></div>
+      <p class="modenote" id="modenote"></p>
     </div>
-    <div class="previewgrid rv" id="preview"></div>
-    <div style="margin-top:34px">
-      <a class="btn btn-accent" href="menu.html">Open the full menu &amp; order →</a>
+  </header>
+
+  <div class="catbar">
+    <div class="wrap catbar-inner" id="catbar"></div>
+  </div>
+
+  <div class="band band-black" style="padding-top:26px">
+    <div class="wrap">
+      <div class="searchwrap">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#231F20" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="search" type="search" placeholder="Search — wings, boneless, tenders, fries, dips…" aria-label="Search the menu">
+      </div>
+      <div id="menuRoot"><p class="empty" id="loading">Loading the menu…</p></div>
     </div>
   </div>
 </section>
 
 <!-- ================= FIND US ================= -->
-<section class="sec" id="find" style="border-top:1px solid var(--line)">
-  <div class="wrap">
-    <div class="sechead rv">
-      <div>
-        <p class="eyebrow">Find Us</p>
-        <h2 class="display">Bandra West</h2>
+<section class="screen" id="screen-find">
+  <div class="band band-red">
+    <div class="wrap">
+      <div class="bandhead">
+        <p class="eyebrow" style="color:var(--black)">Find us</p>
+        <h2 class="display echo" data-echo="BANDRA WEST" style="color:var(--black)">Bandra West</h2>
+        <p>Walk in, call ahead, or send the order and let it come to you.</p>
       </div>
-      <p>Walk in, call ahead, or get it sent. Kitchen closes when the fryers do.</p>
-    </div>
-    <div class="findgrid rv">
-      <div class="findcell"><h4>Address</h4><p id="fAddr">Bandra West, Mumbai 400050</p></div>
-      <div class="findcell"><h4>Hours</h4><p id="fHours">12:00 PM – 1:00 AM, every day</p></div>
-      <div class="findcell"><h4>Order by phone</h4><p><a id="fPhone" href="#">+91 87075 46331</a></p></div>
-      <div class="findcell"><h4>Instagram</h4><p><a id="fIg" href="https://instagram.com/wingd.co" target="_blank" rel="noopener">@wingd.co</a></p></div>
+      <div class="findgrid">
+        <div class="findcell"><h4>Address</h4><p id="fAddr">—</p></div>
+        <div class="findcell"><h4>Hours</h4><p id="fHours">—</p></div>
+        <div class="findcell"><h4>Call</h4><p><a id="fPhone" href="#">—</a></p></div>
+        <div class="findcell"><h4>Instagram</h4><p><a id="fIg" href="#" target="_blank" rel="noopener">—</a></p></div>
+      </div>
+      <div style="margin-top:26px;display:flex;flex-wrap:wrap;gap:10px">
+        <a class="btn btn-black" id="fMapBtn" href="#" target="_blank" rel="noopener">Directions</a>
+        <a class="btn btn-out-black" id="fWaBtn" href="#" target="_blank" rel="noopener">WhatsApp the store</a>
+        <button class="btn btn-cream" data-go="menu" type="button">Order online</button>
+      </div>
     </div>
   </div>
+  <div class="check-cream" aria-hidden="true"></div>
 </section>
 
+</main>
+
+<!-- ================= FOOTER ================= -->
 <footer class="foot">
   <div class="wrap">
     <div class="footgrid">
       <div>
-        <h4>Order</h4>
-        <a href="menu.html">Full menu</a>
-        <a href="menu.html#combos">Combos</a>
-        <a href="menu.html#packs">Group packs</a>
-        <a href="menu.html#wings">Wings by the piece</a>
+        <h4>Menu</h4>
+        <a href="#menu" data-go="menu">Wings</a>
+        <a href="#menu" data-go="menu">Boneless</a>
+        <a href="#menu" data-go="menu">Chicken Tenders</a>
+        <a href="#menu" data-go="menu">Fries &amp; Sides</a>
+        <a href="#menu" data-go="menu">Beverages</a>
       </div>
       <div>
         <h4>Explore</h4>
-        <a href="#build">The build</a>
-        <a href="#heat">Heat scale</a>
-        <a href="#find">Find us</a>
+        <a href="#home" data-go="home">Home</a>
+        <a href="#home" data-go="home">The build</a>
+        <a href="#home" data-go="home">The sauces</a>
       </div>
       <div>
         <h4>Contact</h4>
-        <a id="fWa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+        <a id="fWa2" href="#" target="_blank" rel="noopener">WhatsApp</a>
         <a id="fPhone2" href="#">Call the store</a>
-        <a href="https://instagram.com/wingd.co" target="_blank" rel="noopener">Instagram</a>
+        <a id="fIg2" href="#" target="_blank" rel="noopener">Instagram</a>
       </div>
       <div>
-        <h4>Kitchen</h4>
-        <a href="#build">How a wing is built</a>
-        <a href="menu.html#flavours">All 15 flavours</a>
+        <h4>Visit</h4>
+        <a href="#find" data-go="find">Bandra West, Mumbai</a>
+        <a id="fMap2" href="#" target="_blank" rel="noopener">Directions</a>
       </div>
     </div>
-    <div class="footmark display">WING'D</div>
+    <div class="footmark wordmark">WING'<span class="d">d</span></div>
     <p class="legal">
-      © <span id="yr"></span> WING'D, Bandra West, Mumbai. Site built by DreamKey Automation.<br>
-      Menu items, prices, hours and contact details are configured in <code>menu.json</code> and must be confirmed against the store's live till before publishing. Images and copy are illustrative.
+      © <span id="yr"></span> WING'D, Bandra West, Mumbai. Site built by DreamKey Automation.
+      Menu items and prices are transcribed from the WING'D printed menu. Fees, taxes, hours and the ordering number live in <code>menu.json</code> and must be confirmed against the store's live till before publishing. Orders placed here open as a WhatsApp message to the store — nothing is charged online.
     </p>
   </div>
 </footer>
 
+<!-- ============ customiser ============ -->
+<div class="scrim" id="scrimCustom"></div>
+<div class="panel" id="custom" role="dialog" aria-modal="true" aria-labelledby="cName">
+  <div class="panelhead">
+    <div><h3 id="cName">Item</h3><div class="sub" id="cSub"></div></div>
+    <button class="xbtn" id="closeCustom" type="button" aria-label="Close">✕</button>
+  </div>
+  <div class="panelbody" id="cBody"></div>
+  <div class="panelfoot" style="display:flex;align-items:center;gap:12px">
+    <div class="qty">
+      <button type="button" id="qMinus" aria-label="Decrease quantity">−</button>
+      <span id="qVal">1</span>
+      <button type="button" id="qPlus" aria-label="Increase quantity">+</button>
+    </div>
+    <button class="btn btn-red" id="confirmAdd" type="button" style="flex:1">Add · <span id="cPrice"></span></button>
+  </div>
+</div>
+
+<!-- ============ cart ============ -->
+<div class="scrim" id="scrimCart"></div>
+<aside class="panel" id="cart" role="dialog" aria-modal="true" aria-label="Your order">
+  <div class="panelhead">
+    <div><h3>Your order</h3><div class="sub" id="cartMode">Delivery</div></div>
+    <button class="xbtn" id="closeCart" type="button" aria-label="Close">✕</button>
+  </div>
+  <div class="panelbody" id="cartBody"></div>
+  <div class="panelfoot">
+    <div class="totals" id="cartTotals"></div>
+    <div class="fields" id="cartFields"></div>
+    <p class="formmsg" id="formMsg"></p>
+    <button class="btn btn-red" id="placeOrder" type="button" style="width:100%">Send order on WhatsApp</button>
+    <p style="font-size:.7rem;opacity:.7;margin:9px 0 0;text-align:center;line-height:1.6">
+      No online payment. Your order opens as a pre-filled WhatsApp message to the store, who confirm and take payment.
+    </p>
+  </div>
+</aside>
+
+<div class="cartbar" id="cartbar">
+  <div class="l"><b id="barTotal">₹0</b><span id="barCount">0 items</span></div>
+  <button class="btn btn-cream" id="barOpen" type="button">View order →</button>
+</div>
+
+<div class="toast" id="toast"></div>
+
 <script>
-/* ---------------- year ---------------- */
 document.getElementById('yr').textContent = new Date().getFullYear();
 
-/* ---------------- reveal ---------------- */
-const io = new IntersectionObserver((es)=>{
-  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-},{threshold:.12});
-document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+const $  = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-/* ---------------- wing build animation ---------------- */
-const stage = document.getElementById('stage');
-const stepEls = [...document.querySelectorAll('#steps li')];
-const DELAYS = [100,620,1140,1660,2180,2700,3220,3740];
-let timers = [];
-const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let DATA=null, CUR='₹', CART=[], MODE='Delivery', draft=null;
 
-function runBuild(){
-  timers.forEach(clearTimeout); timers = [];
-  stepEls.forEach(li=>li.classList.remove('lit'));
-  if(reduce){ stepEls.forEach(li=>li.classList.add('lit')); return; }
-  stage.classList.remove('playing');
-  void stage.offsetWidth;               // force reflow so the animation restarts
-  stage.classList.add('playing');
-  DELAYS.forEach((d,i)=>{
-    timers.push(setTimeout(()=>stepEls[i] && stepEls[i].classList.add('lit'), d + 180));
-  });
+const store = {
+  get(k,f){ try{ const v=localStorage.getItem(k); return v?JSON.parse(v):f; }catch(e){ return f; } },
+  set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} }
+};
+const money = n => CUR + Number(n).toLocaleString('en-IN');
+
+function toast(m){
+  const t=$('#toast'); t.textContent=m; t.classList.add('on');
+  clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('on'),1900);
 }
-document.getElementById('replay').addEventListener('click', runBuild);
-runBuild();
 
-/* ---------------- data-driven bits ---------------- */
-const FLAME='◆';
-fetch('menu.json?v=2').then(r=>r.json()).then(data=>{
-  /* --- store details --- */
-  const s = data.store;
-  document.getElementById('fAddr').textContent  = s.address;
-  document.getElementById('fHours').textContent = s.hours;
-  const telHref = 'tel:' + s.phone.replace(/[^\d+]/g,'');
-  ['fPhone','fPhone2'].forEach(id=>{
-    const el = document.getElementById(id);
-    el.href = telHref;
-    if(id==='fPhone') el.textContent = s.phone;
-  });
-  document.getElementById('fWa').href = 'https://wa.me/' + s.whatsapp;
-  const ig = document.getElementById('fIg');
-  ig.href = s.instagram; ig.textContent = '@' + s.instagram.split('/').filter(Boolean).pop();
-
-  /* --- heat scale --- */
-  const levels = [0,1,2,3,4,5];
-  const names  = {0:'No heat',1:'Warm',2:'Building',3:'Hot',4:'Serious',5:'Atomic'};
-  const row = document.getElementById('heatrow');
-  const byLevel = l => data.flavours.filter(f=>f.heat===l);
-
-  levels.forEach(l=>{
-    const b = document.createElement('button');
-    b.type='button'; b.className='heatbtn'; b.dataset.level=l; b.setAttribute('role','tab');
-    b.innerHTML = `<span class="flames">${'🔥'.repeat(Math.max(l,1)).slice(0, l===0?0:undefined) || '○'}</span>
-                   <span class="nm">${names[l]}</span>`;
-    b.addEventListener('click',()=>setHeat(l));
-    row.appendChild(b);
-  });
-
-  const HUE = {0:'#F5EFE3',1:'#F2B705',2:'#F0930C',3:'#FF6B1A',4:'#E03C10',5:'#D62828'};
-  function setHeat(l){
-    document.querySelectorAll('.heatbtn').forEach(b=>b.classList.toggle('on', +b.dataset.level===l));
-    const list = byLevel(l);
-    const pick = list[0] || {name:'—',note:'',type:'—'};
-    document.documentElement.style.setProperty('--accent', HUE[l]);
-    const sauce = document.getElementById('sauceLayer');
-    if(sauce) sauce.setAttribute('fill', HUE[l]);
-    document.getElementById('heatnum').textContent  = l;
-    document.getElementById('heatname').textContent = list.map(f=>f.name).join(' · ') || pick.name;
-    document.getElementById('heatdesc').textContent = pick.note;
-    document.getElementById('heattype').textContent = [...new Set(list.map(f=>f.type))].join(' / ') || '—';
-    document.getElementById('heatcount').textContent= list.length;
-    document.getElementById('heatflames').textContent = l===0 ? 'No heat' : FLAME.repeat(l);
-  }
-  setHeat(3);
-
-  /* --- menu preview: one highlight from each of the first four categories --- */
-  const prev = document.getElementById('preview');
-  data.categories.slice(0,4).forEach(cat=>{
-    const item = cat.items.find(i=>i.badge) || cat.items[0];
-    const el = document.createElement('a');
-    el.className='pcard'; el.href='menu.html#'+cat.id;
-    el.innerHTML = `
-      ${item.badge?`<span class="tag">${item.badge}</span>`:''}
-      <h4>${item.name}</h4>
-      <p>${item.desc}</p>
-      <div class="pr">${s.currency}${item.price}</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bone-dim)">${cat.name} →</div>`;
-    prev.appendChild(el);
-  });
-}).catch(err=>{
-  console.error('menu.json failed to load', err);
-  document.getElementById('preview').innerHTML =
-    '<p style="color:var(--bone-dim)">Menu is loading elsewhere — <a href="menu.html" style="color:var(--turmeric)">open the full menu</a>.</p>';
+/* ================= TABS (one page, one link) ================= */
+const SCREENS = ['home','menu','find'];
+function go(name, push){
+  if(!SCREENS.includes(name)) name = 'home';
+  SCREENS.forEach(s => $('#screen-'+s).classList.toggle('on', s===name));
+  $$('.tab').forEach(t => t.classList.toggle('on', t.dataset.go===name));
+  if(push !== false && location.hash.slice(1) !== name) history.pushState(null,'','#'+name);
+  window.scrollTo({top:0, behavior:'auto'});
+}
+document.addEventListener('click', e=>{
+  const el = e.target.closest('[data-go]');
+  if(!el) return;
+  e.preventDefault();
+  go(el.dataset.go);
 });
+window.addEventListener('popstate', ()=> go(location.hash.slice(1) || 'home', false));
+
+/* ================= RENDER ================= */
+function boot(data){
+  DATA=data; CUR=data.store.currency||'₹';
+  const s=data.store;
+
+  /* contact */
+  const tel='tel:'+s.phone.replace(/[^\d+]/g,'');
+  const wa='https://wa.me/'+s.whatsapp;
+  const igName='@'+s.instagram.split('/').filter(Boolean).pop();
+  $('#fAddr').textContent=s.address;
+  $('#fHours').textContent=s.hours;
+  ['fPhone','fPhone2'].forEach(id=>{ const e=$('#'+id); e.href=tel; e.textContent=s.phone; });
+  ['fIg','fIg2'].forEach(id=>{ const e=$('#'+id); e.href=s.instagram; e.textContent=igName; });
+  ['fMapBtn','fMap2'].forEach(id=> $('#'+id).href=s.mapUrl);
+  ['fWaBtn','fWa2'].forEach(id=> $('#'+id).href=wa);
+
+  /* sauce wall */
+  $('#sauceWall').innerHTML = data.sauces.map(f=>`
+    <div class="sauce"><h4>${esc(f.name)}</h4><p>${esc(f.note)}</p></div>`).join('');
+
+  /* menu meta */
+  $('#menumeta').innerHTML = [
+    `<span class="pill">${esc(s.hours)}</span>`,
+    `<span class="pill">Prep <b>${esc(s.prepTimeMins)} min</b></span>`,
+    `<span class="pill">Delivery within <b>${s.deliveryRadiusKm} km</b></span>`,
+    `<span class="pill">Free delivery over <b>${money(s.freeDeliveryAbove)}</b></span>`,
+    `<span class="pill">Min order <b>${money(s.minOrder)}</b></span>`
+  ].join('');
+
+  /* order mode */
+  MODE = store.get('wingd_mode', s.orderTypes[0]);
+  if(!s.orderTypes.includes(MODE)) MODE = s.orderTypes[0];
+  const mb=$('#modebar'); mb.innerHTML='';
+  s.orderTypes.forEach(t=>{
+    const b=document.createElement('button');
+    b.type='button'; b.className='modebtn'+(t===MODE?' on':''); b.textContent=t; b.setAttribute('role','tab');
+    b.onclick=()=>{ MODE=t; store.set('wingd_mode',t);
+      $$('.modebtn').forEach(x=>x.classList.toggle('on', x.textContent===t));
+      renderModeNote(); renderCart(); };
+    mb.appendChild(b);
+  });
+  renderModeNote();
+
+  /* categories */
+  const root=$('#menuRoot'); root.innerHTML='';
+  const bar=$('#catbar'); bar.innerHTML='';
+
+  data.categories.forEach(cat=>{
+    const a=document.createElement('a');
+    a.className='catlink'; a.href='#'; a.textContent=cat.name; a.dataset.cat=cat.id;
+    a.onclick=e=>{ e.preventDefault();
+      document.getElementById('cat-'+cat.id).scrollIntoView({behavior:'smooth',block:'start'}); };
+    bar.appendChild(a);
+
+    const sec=document.createElement('section');
+    sec.className='catsec'; sec.id='cat-'+cat.id;
+    sec.innerHTML=`<div class="cathead"><h3>${esc(cat.name)}</h3><span>${esc(cat.tagline)} · ${cat.items.length} items</span></div><div class="items"></div>`;
+    const grid=sec.querySelector('.items');
+
+    cat.items.forEach(item=>{
+      const priceLabel = item.sizes
+        ? item.sizes.map(z=>money(z.price)).join(' | ')
+        : money(item.price);
+      const sizeLabel = item.sizes ? item.sizes.map(z=>z.label).join(' | ') : '';
+      const el=document.createElement('article');
+      el.className='item';
+      el.dataset.search=(item.name+' '+item.desc+' '+cat.name).toLowerCase();
+      el.innerHTML=`
+        ${item.badge?`<span class="badge">${esc(item.badge)}</span>`:''}
+        <h4>${esc(item.name)}</h4>
+        <p class="desc">${esc(item.desc)}</p>
+        ${sizeLabel?`<div style="font-family:'Zilla Slab',serif;font-weight:600;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;opacity:.8">${esc(sizeLabel)}</div>`:''}
+        <div class="itemfoot">
+          <span class="prices">${priceLabel}</span>
+          <button class="addbtn" type="button">Add</button>
+        </div>`;
+      el.querySelector('.addbtn').onclick=()=>openCustomiser(cat,item);
+      grid.appendChild(el);
+    });
+    root.appendChild(sec);
+  });
+
+  CART = store.get('wingd_cart', []);
+  renderCart();
+  setupScrollSpy();
+}
+
+function renderModeNote(){
+  const s=DATA.store;
+  const n={
+    'Delivery':`Delivered within ${s.deliveryRadiusKm} km of Bandra West. ${money(s.deliveryFee)} delivery, free over ${money(s.freeDeliveryAbove)}.`,
+    'Takeaway':`Ready for pickup in ${s.prepTimeMins} minutes at ${s.address}. No delivery fee.`,
+    'Dine-in':`Walk in at ${s.address}. Send the order ahead and it starts frying before you sit down.`
+  };
+  $('#modenote').textContent = n[MODE]||'';
+  $('#cartMode').textContent = MODE;
+}
+
+/* ================= CUSTOMISER ================= */
+function openCustomiser(cat,item){
+  const sizes = item.sizes || null;
+  draft={
+    catName:cat.name, id:item.id, name:item.name,
+    sizes, sizeIdx:0,
+    price: sizes ? sizes[0].price : item.price,
+    qty:1,
+    maxSauce:item.sauces||0, sauces:[],
+    maxDips:item.dips||0, dips:[],
+    note:''
+  };
+
+  $('#cName').textContent=item.name;
+  $('#cSub').textContent=cat.name;
+
+  let html='';
+  if(sizes){
+    html+=`<div class="optgroup"><h5>Size</h5><p class="hint">${esc(item.desc)}</p>
+      <div class="opts">${sizes.map((z,i)=>`<button type="button" class="opt${i===0?' on':''}" data-size="${i}">${esc(z.label)}<span class="px">${money(z.price)}</span></button>`).join('')}</div></div>`;
+  }
+  if(draft.maxSauce>0){
+    html+=`<div class="optgroup"><h5>Wing'd sauce <span style="opacity:.6">(pick ${draft.maxSauce})</span></h5>
+      <p class="hint">Wet toss or dry rub — every sauce is made in house.</p>
+      <div class="opts">${DATA.sauces.map(f=>`<button type="button" class="opt" data-sauce="${esc(f.id)}">${esc(f.name)}</button>`).join('')}</div>
+      <p class="hint" id="sauceCount" style="margin:10px 0 0"></p></div>`;
+  }
+  if(draft.maxDips>0){
+    html+=`<div class="optgroup"><h5>Dips <span style="opacity:.6">(${draft.maxDips} included)</span></h5>
+      <p class="hint">Extra dips are ₹50 each — add them from the Dips section.</p>
+      <div class="opts">${DATA.dips.map(d=>`<button type="button" class="opt" data-dip="${esc(d.id)}">${esc(d.name)}</button>`).join('')}</div>
+      <p class="hint" id="dipCount" style="margin:10px 0 0"></p></div>`;
+  }
+  if(!sizes && !draft.maxSauce && !draft.maxDips){
+    html+=`<div class="optgroup"><h5>${esc(cat.name)}</h5><p class="hint" style="margin:0">${esc(item.desc)}</p></div>`;
+  }
+  html+=`<div class="optgroup"><h5>Kitchen note</h5><p class="hint">Allergies, extra crispy, sauce on the side — anything the kitchen should know.</p>
+    <textarea class="note" id="cNote" maxlength="240" placeholder="Optional"></textarea></div>`;
+
+  $('#cBody').innerHTML=html;
+  $('#cBody').scrollTop=0;
+
+  $$('#cBody [data-size]').forEach(b=> b.onclick=()=>{
+    draft.sizeIdx=+b.dataset.size; draft.price=draft.sizes[draft.sizeIdx].price;
+    $$('#cBody [data-size]').forEach(x=>x.classList.toggle('on',x===b));
+    setQty(draft.qty);
+  });
+  $$('#cBody [data-sauce]').forEach(b=> b.onclick=()=>{
+    const id=b.dataset.sauce, i=draft.sauces.indexOf(id);
+    if(i>-1) draft.sauces.splice(i,1);
+    else if(draft.sauces.length<draft.maxSauce) draft.sauces.push(id);
+    else { toast(`Pick ${draft.maxSauce} sauce${draft.maxSauce>1?'s':''} on this one`); return; }
+    syncPicks();
+  });
+  $$('#cBody [data-dip]').forEach(b=> b.onclick=()=>{
+    const id=b.dataset.dip, i=draft.dips.indexOf(id);
+    if(i>-1) draft.dips.splice(i,1);
+    else if(draft.dips.length<draft.maxDips) draft.dips.push(id);
+    else { toast(`${draft.maxDips} dips included — extras are ₹50 each`); return; }
+    syncPicks();
+  });
+  const n=$('#cNote'); if(n) n.oninput=e=>draft.note=e.target.value;
+
+  setQty(1); syncPicks();
+  showPanel('custom',true);
+}
+
+function syncPicks(){
+  $$('#cBody [data-sauce]').forEach(b=>{
+    const on=draft.sauces.includes(b.dataset.sauce);
+    b.classList.toggle('on',on);
+    b.classList.toggle('dis', !on && draft.sauces.length>=draft.maxSauce);
+  });
+  $$('#cBody [data-dip]').forEach(b=>{
+    const on=draft.dips.includes(b.dataset.dip);
+    b.classList.toggle('on',on);
+    b.classList.toggle('dis', !on && draft.dips.length>=draft.maxDips);
+  });
+  const sc=$('#sauceCount');
+  if(sc) sc.textContent=`${draft.sauces.length} of ${draft.maxSauce} selected`+(draft.sauces.length<draft.maxSauce?' — required':'');
+  const dc=$('#dipCount');
+  if(dc) dc.textContent=`${draft.dips.length} of ${draft.maxDips} selected`+(draft.dips.length<draft.maxDips?' — required':'');
+}
+
+function setQty(q){
+  draft.qty=Math.max(1,Math.min(50,q));
+  $('#qVal').textContent=draft.qty;
+  $('#cPrice').textContent=money(draft.price*draft.qty);
+}
+$('#qMinus').onclick=()=>setQty(draft.qty-1);
+$('#qPlus').onclick =()=>setQty(draft.qty+1);
+
+$('#confirmAdd').onclick=()=>{
+  if(draft.maxSauce>0 && draft.sauces.length<draft.maxSauce){ toast(`Pick ${draft.maxSauce} sauce${draft.maxSauce>1?'s':''} first`); return; }
+  if(draft.maxDips>0 && draft.dips.length<draft.maxDips){ toast(`Pick ${draft.maxDips} dip${draft.maxDips>1?'s':''} first`); return; }
+  const sauceNames=draft.sauces.map(id=>DATA.sauces.find(f=>f.id===id).name);
+  const dipNames  =draft.dips.map(id=>DATA.dips.find(d=>d.id===id).name);
+  const size = draft.sizes ? draft.sizes[draft.sizeIdx].label : null;
+  const key=[draft.id,size,sauceNames.join('+'),dipNames.join('+'),draft.note].join('|');
+
+  const ex=CART.find(l=>l.key===key);
+  if(ex) ex.qty+=draft.qty;
+  else CART.push({key,id:draft.id,name:draft.name,price:draft.price,qty:draft.qty,
+                  size,sauces:sauceNames,dips:dipNames,note:draft.note.trim()});
+
+  store.set('wingd_cart',CART);
+  renderCart(); showPanel('custom',false); toast('Added to your order');
+};
+
+/* ================= CART ================= */
+function totals(){
+  const s=DATA.store;
+  const sub=CART.reduce((n,l)=>n+l.price*l.qty,0);
+  const delivery=(MODE==='Delivery'&&sub>0&&sub<s.freeDeliveryAbove)?s.deliveryFee:0;
+  const packaging=(MODE==='Dine-in'||sub===0)?0:s.packagingFee;
+  const taxable=sub+packaging+delivery;
+  const gst=Math.round(taxable*(s.gstPercent/100));
+  return {sub,delivery,packaging,gst,grand:taxable+gst,count:CART.reduce((n,l)=>n+l.qty,0)};
+}
+
+function renderCart(){
+  const t=totals(), s=DATA.store;
+  $('#navCount').textContent=t.count;
+  $('#barTotal').textContent=money(t.grand);
+  $('#barCount').textContent=t.count===1?'1 item':t.count+' items';
+  $('#cartbar').classList.toggle('on',t.count>0);
+  $('#cartMode').textContent=MODE;
+
+  const body=$('#cartBody');
+  if(!CART.length){
+    body.innerHTML=`<p class="empty">Nothing in here yet.<br><br>
+      <button class="btn btn-out-black" type="button" id="goMenuFromCart">Open the menu</button></p>`;
+    const g=$('#goMenuFromCart');
+    if(g) g.onclick=()=>{ showPanel('cart',false); go('menu'); };
+  } else {
+    body.innerHTML=CART.map((l,i)=>{
+      const cfg=[l.size, l.sauces.length?l.sauces.join(' + '):'',
+                 l.dips.length?'Dips: '+l.dips.join(', '):'',
+                 l.note?'“'+l.note+'”':''].filter(Boolean).join(' · ');
+      return `<div class="line"><div class="info">
+          <h5>${l.qty}× ${esc(l.name)}</h5>
+          ${cfg?`<div class="cfg">${esc(cfg)}</div>`:''}
+          <button class="rm" type="button" data-rm="${i}">Remove</button>
+        </div><div class="lp">${money(l.price*l.qty)}</div></div>`;
+    }).join('');
+    $$('#cartBody [data-rm]').forEach(b=> b.onclick=()=>{
+      CART.splice(+b.dataset.rm,1); store.set('wingd_cart',CART); renderCart(); });
+  }
+
+  const rows=[
+    ['Subtotal',t.sub],
+    ...(t.packaging?[['Packaging',t.packaging]]:[]),
+    ...(MODE==='Delivery'?[['Delivery',(t.delivery===0&&t.sub>0)?'FREE':t.delivery]]:[]),
+    [`GST (${s.gstPercent}%)`,t.gst]
+  ];
+  $('#cartTotals').innerHTML=rows.map(([k,v])=>
+    `<div><span>${esc(k)}</span><span>${v==='FREE'?'FREE':money(v)}</span></div>`).join('')
+    +`<div class="grand"><span>Total</span><span>${money(t.grand)}</span></div>`;
+
+  const f=$('#cartFields');
+  const common=`
+    <input id="fName" placeholder="Your name" autocomplete="name" value="${esc(store.get('wingd_name',''))}">
+    <input id="fTel" placeholder="Phone number" inputmode="tel" autocomplete="tel" value="${esc(store.get('wingd_tel',''))}">`;
+  if(MODE==='Delivery'){
+    f.innerHTML=common+`
+      <textarea id="fAddress" rows="2" placeholder="Delivery address — flat, building, street">${esc(store.get('wingd_addr',''))}</textarea>
+      <input id="fLandmark" placeholder="Landmark (optional)" value="${esc(store.get('wingd_lm',''))}">`;
+  } else if(MODE==='Takeaway'){
+    f.innerHTML=common+`<input id="fWhen" placeholder="Pickup time (optional) — e.g. 8:30 PM">`;
+  } else {
+    f.innerHTML=common+`<input id="fPax" placeholder="Number of people (optional)" inputmode="numeric">`;
+  }
+  $('#formMsg').textContent='';
+}
+
+/* ================= CHECKOUT ================= */
+$('#placeOrder').onclick=()=>{
+  const s=DATA.store, t=totals(), msg=$('#formMsg');
+  msg.textContent='';
+  if(!CART.length){ msg.textContent='Your order is empty.'; return; }
+  if(t.sub<s.minOrder){ msg.textContent=`Minimum order is ${money(s.minOrder)}. You're at ${money(t.sub)}.`; return; }
+
+  const val=id=>{ const e=document.getElementById(id); return e?e.value.trim():''; };
+  const mark=(id,bad)=>{ const e=document.getElementById(id); if(e) e.classList.toggle('err',bad); };
+
+  const name=val('fName'), tel=val('fTel');
+  mark('fName',!name); mark('fTel',tel.replace(/\D/g,'').length<10);
+  if(!name){ msg.textContent='Add your name so the kitchen knows whose order it is.'; return; }
+  if(tel.replace(/\D/g,'').length<10){ msg.textContent='Add a valid phone number (at least 10 digits).'; return; }
+
+  let addr='',landmark='',extra='';
+  if(MODE==='Delivery'){
+    addr=val('fAddress'); landmark=val('fLandmark');
+    mark('fAddress',!addr);
+    if(!addr){ msg.textContent='Add a delivery address.'; return; }
+    store.set('wingd_addr',addr); store.set('wingd_lm',landmark);
+  } else if(MODE==='Takeaway'){ extra=val('fWhen'); }
+  else { extra=val('fPax'); }
+  store.set('wingd_name',name); store.set('wingd_tel',tel);
+
+  const L=[];
+  L.push(`*NEW ${MODE.toUpperCase()} ORDER — ${s.name}*`); L.push('');
+  CART.forEach(l=>{
+    L.push(`• ${l.qty}× ${l.name}${l.size?' ('+l.size+')':''} — ${money(l.price*l.qty)}`);
+    const cfg=[l.sauces.length?'Sauce: '+l.sauces.join(' + '):'',
+               l.dips.length?'Dips: '+l.dips.join(', '):''].filter(Boolean).join(' | ');
+    if(cfg) L.push(`   ${cfg}`);
+    if(l.note) L.push(`   Note: ${l.note}`);
+  });
+  L.push('');
+  L.push(`Subtotal: ${money(t.sub)}`);
+  if(t.packaging) L.push(`Packaging: ${money(t.packaging)}`);
+  if(MODE==='Delivery') L.push(`Delivery: ${t.delivery?money(t.delivery):'FREE'}`);
+  L.push(`GST (${s.gstPercent}%): ${money(t.gst)}`);
+  L.push(`*TOTAL: ${money(t.grand)}*`); L.push('');
+  L.push(`Name: ${name}`); L.push(`Phone: ${tel}`);
+  if(MODE==='Delivery'){ L.push(`Address: ${addr}`); if(landmark) L.push(`Landmark: ${landmark}`); }
+  else if(MODE==='Takeaway'&&extra) L.push(`Pickup time: ${extra}`);
+  else if(MODE==='Dine-in'&&extra) L.push(`Guests: ${extra}`);
+  L.push(''); L.push(`Placed from the WING'D site · ${new Date().toLocaleString('en-IN')}`);
+
+  window.open('https://wa.me/'+s.whatsapp+'?text='+encodeURIComponent(L.join('\n')),'_blank','noopener');
+  toast('Order sent to WhatsApp');
+};
+
+/* ================= PANELS ================= */
+function showPanel(which,on){
+  $('#'+which).classList.toggle('on',on);
+  $(which==='cart'?'#scrimCart':'#scrimCustom').classList.toggle('on',on);
+  document.body.style.overflow = on ? 'hidden' : '';
+}
+$('#closeCustom').onclick=()=>showPanel('custom',false);
+$('#scrimCustom').onclick=()=>showPanel('custom',false);
+$('#closeCart').onclick  =()=>showPanel('cart',false);
+$('#scrimCart').onclick  =()=>showPanel('cart',false);
+$('#openCart').onclick   =()=>showPanel('cart',true);
+$('#barOpen').onclick    =()=>showPanel('cart',true);
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ showPanel('custom',false); showPanel('cart',false); }});
+
+/* ================= SEARCH ================= */
+$('#search').addEventListener('input',e=>{
+  const q=e.target.value.trim().toLowerCase();
+  let any=false;
+  $$('#menuRoot .catsec').forEach(sec=>{
+    let shown=0;
+    sec.querySelectorAll('.item').forEach(it=>{
+      const hit=!q||it.dataset.search.includes(q);
+      it.style.display=hit?'':'none'; if(hit) shown++;
+    });
+    sec.style.display=shown?'':'none';
+    if(shown) any=true;
+  });
+  let none=$('#noResults');
+  if(!any&&q){
+    if(!none){ none=document.createElement('p'); none.id='noResults'; none.className='empty'; $('#menuRoot').appendChild(none); }
+    none.textContent=`Nothing on the menu matches “${e.target.value}”.`;
+    none.style.display='';
+  } else if(none){ none.style.display='none'; }
+});
+
+/* ================= SCROLLSPY ================= */
+function setupScrollSpy(){
+  const spy=new IntersectionObserver(es=>{
+    es.forEach(en=>{ if(en.isIntersecting){
+      const id=en.target.id.replace('cat-','');
+      $$('.catlink').forEach(l=>l.classList.toggle('on',l.dataset.cat===id));
+    }});
+  },{rootMargin:'-150px 0px -70% 0px'});
+  $$('#menuRoot .catsec').forEach(s=>spy.observe(s));
+}
+
+/* ================= LOAD ================= */
+fetch('menu.json?v=3')
+  .then(r=>{ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+  .then(d=>{ const l=$('#loading'); if(l) l.remove(); boot(d); go(location.hash.slice(1)||'home', false); })
+  .catch(err=>{
+    console.error(err);
+    const l=$('#loading');
+    if(l) l.innerHTML='The menu could not load. Refresh the page, or <a style="color:var(--yellow);border-bottom:2px solid" href="https://wa.me/918707546331">message the store on WhatsApp</a>.';
+  });
 </script>
 </body>
 </html>
