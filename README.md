@@ -1,16 +1,23 @@
-# WING'D — website + menu + ordering
+# WING'D — one-page site + menu + ordering
 
-Live site: https://shivee999.github.io/wingd/
+Live: https://shivee999.github.io/wingd/
 
-- `index.html` — main site (hero wing build animation, heat scale, menu preview, find us)
-- `menu.html` — full menu, item customiser, cart, delivery/takeaway/dine-in, WhatsApp checkout
-- `menu.json` — **the only file you need to edit.** Items, prices, flavours, dips, fees, hours, store WhatsApp number.
-- `style.css` — shared design system
+Single page, single link. Home / Menu / Find Us are tabs inside `index.html`.
 
-## Before going live
-1. Replace every price in `menu.json` with the real till price.
-2. Replace `store.whatsapp` with the WING'D store number (country code, digits only, no `+`).
-3. Confirm `deliveryFee`, `freeDeliveryAbove`, `packagingFee`, `gstPercent`, `minOrder`, `hours`, `address`, `phone`.
-4. Optional: add `swiggy` / `zomato` links.
+- `index.html` — the whole site
+- `menu.json` — **the only file you need to edit.** Items, prices, sauces, dips, fees, hours, store WhatsApp number.
+- `style.css` — brand system taken from the printed WING'D menu
+- `assets/rooster.png` — brand illustration extracted from the printed menu
 
-Edit `menu.json` straight in GitHub's web editor — the site picks it up on the next page load.
+## Menu source
+All items and prices are transcribed from `WINGD_Menu_Print.pdf` (Aug 2026):
+Wings 4/6/8 PC ₹349|479|649 · Boneless 8/10/12 PC ₹349|479|649 · Flavour Fix Platter ₹949 ·
+Peri-Peri Tenders ₹379|599 · Classic Tenders ₹399|599 · Fries ₹349–479 · Sides ₹349–479 ·
+Dips ₹50 · Beverages ₹199.
+
+## Before going live — NOT from the printed menu, confirm each
+1. `store.whatsapp` — currently a placeholder. Set the WING'D store number (country code, digits only, no `+`).
+2. `deliveryFee` (49), `freeDeliveryAbove` (999), `packagingFee` (20), `minOrder` (199), `deliveryRadiusKm` (6), `prepTimeMins`, `hours`, `address`, `phone`.
+3. `gstPercent` (5) — the correct restaurant GST rate depends on the establishment's category. Confirm with an accountant.
+
+Edit `menu.json` straight in GitHub's web editor; the site picks it up on the next page load.
