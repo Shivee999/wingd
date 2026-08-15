@@ -321,6 +321,9 @@ textarea.note:focus{border-color:var(--red)}
 .findcell{border:2px solid currentColor;padding:24px}
 .findcell h4{font-family:'Zilla Slab',serif;font-weight:700;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--red);margin-bottom:10px}
 .band-black .findcell h4{color:var(--yellow)}
+.band-red .findcell h4{color:var(--black)}
+.band-red .findcell{border-color:var(--cream)}
+.band-red .findcell a{border-bottom-color:var(--cream)}
 .findcell p{font-size:1.02rem;margin:0;line-height:1.5}
 .findcell a{border-bottom:2px solid currentColor}
 
