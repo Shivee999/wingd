@@ -247,6 +247,10 @@ const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>'
 
 let DATA=null, CUR='₹', CART=[], MODE='Delivery', draft=null;
 
+/* Porter (porter.in) 2-wheeler delivery. All Porter API calls go through the
+   store's own n8n webhooks — the Porter key is never exposed to the browser. */
+let P = { enabled:false, cfg:{}, coords:null, quote:null, busy:false, err:'', order:null };
+
 const store = {
   get(k,f){ try{ const v=localStorage.getItem(k); return v?JSON.parse(v):f; }catch(e){ return f; } },
   set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} }
@@ -279,6 +283,8 @@ window.addEventListener('popstate', ()=> go(location.hash.slice(1) || 'home', fa
 function boot(data){
   DATA=data; CUR=data.store.currency||'₹';
   const s=data.store;
+  P.cfg = data.porter || {};
+  P.enabled = !!(P.cfg.enabled && P.cfg.quoteUrl && P.cfg.orderUrl);
 
   /* contact */
   const tel='tel:'+s.phone.replace(/[^\d+]/g,'');
@@ -358,7 +364,10 @@ function boot(data){
   });
 
   CART = store.get('wingd_cart', []);
+  const sc = store.get('wingd_coords', null);
+  if(sc && typeof sc.lat==='number') P.coords = sc;
   renderCart();
+  if(P.enabled && P.coords) fetchPorterQuote();
   setupScrollSpy();
 }
 
@@ -483,14 +492,25 @@ $('#confirmAdd').onclick=()=>{
 };
 
 /* ================= CART ================= */
+function porterFare(){
+  return (P.enabled && P.quote && P.quote.serviceable && typeof P.quote.fare==='number')
+    ? P.quote.fare : null;
+}
 function totals(){
   const s=DATA.store;
   const sub=CART.reduce((n,l)=>n+l.price*l.qty,0);
-  const delivery=(MODE==='Delivery'&&sub>0&&sub<s.freeDeliveryAbove)?s.deliveryFee:0;
+  const pf=porterFare();
+  let delivery=0, absorbed=0;
+  if(MODE==='Delivery' && sub>0){
+    if(pf!==null){
+      if(sub>=s.freeDeliveryAbove && P.cfg.storeAbsorbsFareAboveFreeThreshold){ delivery=0; absorbed=pf; }
+      else delivery=pf;
+    } else if(sub<s.freeDeliveryAbove){ delivery=s.deliveryFee; }
+  }
   const packaging=(MODE==='Dine-in'||sub===0)?0:s.packagingFee;
   const taxable=sub+packaging+delivery;
   const gst=Math.round(taxable*(s.gstPercent/100));
-  return {sub,delivery,packaging,gst,grand:taxable+gst,count:CART.reduce((n,l)=>n+l.qty,0)};
+  return {sub,delivery,packaging,gst,absorbed,porter:pf,grand:taxable+gst,count:CART.reduce((n,l)=>n+l.qty,0)};
 }
 
 function renderCart(){
@@ -525,11 +545,13 @@ function renderCart(){
   const rows=[
     ['Subtotal',t.sub],
     ...(t.packaging?[['Packaging',t.packaging]]:[]),
-    ...(MODE==='Delivery'?[['Delivery',(t.delivery===0&&t.sub>0)?'FREE':t.delivery]]:[]),
+    ...(MODE==='Delivery'?[[t.porter!==null?'Delivery (Porter 2-wheeler)':'Delivery',
+        (t.delivery===0&&t.sub>0)?'FREE':t.delivery]]:[]),
     [`GST (${s.gstPercent}%)`,t.gst]
   ];
   $('#cartTotals').innerHTML=rows.map(([k,v])=>
     `<div><span>${esc(k)}</span><span>${v==='FREE'?'FREE':money(v)}</span></div>`).join('')
+    + (t.absorbed ? `<div style="font-size:.72rem;opacity:.7"><span>Porter fare covered by the store</span><span>${money(t.absorbed)}</span></div>` : '')
     +`<div class="grand"><span>Total</span><span>${money(t.grand)}</span></div>`;
 
   const f=$('#cartFields');
@@ -539,13 +561,122 @@ function renderCart(){
   if(MODE==='Delivery'){
     f.innerHTML=common+`
       <textarea id="fAddress" rows="2" placeholder="Delivery address — flat, building, street">${esc(store.get('wingd_addr',''))}</textarea>
-      <input id="fLandmark" placeholder="Landmark (optional)" value="${esc(store.get('wingd_lm',''))}">`;
+      <input id="fLandmark" placeholder="Landmark (optional)" value="${esc(store.get('wingd_lm',''))}">
+      <div id="porterBox"></div>`;
+    renderPorter();
   } else if(MODE==='Takeaway'){
     f.innerHTML=common+`<input id="fWhen" placeholder="Pickup time (optional) — e.g. 8:30 PM">`;
   } else {
     f.innerHTML=common+`<input id="fPax" placeholder="Number of people (optional)" inputmode="numeric">`;
   }
   $('#formMsg').textContent='';
+}
+
+/* ================= PORTER DELIVERY ================= */
+/* Porter needs geo-coordinates for pickup and drop — an address string alone
+   is not enough. Everything here talks to the store's n8n webhooks, never to
+   Porter directly, so the Porter API key stays server-side. */
+
+function renderPorter(){
+  const box = document.getElementById('porterBox');
+  if(!box) return;
+  if(!P.enabled){ box.innerHTML=''; return; }
+
+  const c = P.coords;
+  let status;
+  if(P.busy)        status = `<span class="pstat wait">Checking Porter…</span>`;
+  else if(P.err)    status = `<span class="pstat bad">${esc(P.err)}</span>`;
+  else if(P.quote && P.quote.serviceable)
+                    status = `<span class="pstat ok">Porter 2-wheeler · ${money(P.quote.fare)}${P.quote.eta?' · ~'+esc(P.quote.eta)+' min':''}</span>`;
+  else if(P.quote)  status = `<span class="pstat bad">Porter doesn't serve that drop point. Pick a closer location or switch to Takeaway.</span>`;
+  else if(c)        status = `<span class="pstat">Location set — getting the Porter fare…</span>`;
+  else              status = `<span class="pstat">Porter needs your exact drop pin to quote the fare.</span>`;
+
+  box.innerHTML = `
+    <div class="porterbox">
+      <div class="prow">
+        <button type="button" class="btn btn-out-black pbtn" id="pLocate">${c?'Update pin':'Use my location'}</button>
+        <button type="button" class="btn btn-out-black pbtn" id="pPaste">Paste map link</button>
+      </div>
+      ${c?`<div class="pcoord mono">Drop pin: ${c.lat.toFixed(5)}, ${c.lng.toFixed(5)}</div>`:''}
+      <div class="pstatwrap">${status}</div>
+    </div>`;
+
+  const b1=document.getElementById('pLocate');
+  if(b1) b1.onclick = useMyLocation;
+  const b2=document.getElementById('pPaste');
+  if(b2) b2.onclick = pasteMapLink;
+}
+
+function setCoords(lat,lng){
+  P.coords={lat,lng}; P.quote=null; P.err='';
+  try{ localStorage.setItem('wingd_coords', JSON.stringify(P.coords)); }catch(e){}
+  renderPorter(); fetchPorterQuote();
+}
+
+function useMyLocation(){
+  if(!navigator.geolocation){ P.err='This browser cannot share a location. Paste a Google Maps link instead.'; renderPorter(); return; }
+  P.busy=true; P.err=''; renderPorter();
+  navigator.geolocation.getCurrentPosition(
+    pos=>{ P.busy=false; setCoords(pos.coords.latitude, pos.coords.longitude); },
+    err=>{ P.busy=false;
+           P.err = err.code===1 ? 'Location permission denied. Paste a Google Maps link instead.'
+                                : 'Could not read your location. Paste a Google Maps link instead.';
+           renderPorter(); },
+    {enableHighAccuracy:true, timeout:12000, maximumAge:60000});
+}
+
+/* Accepts "19.0596,72.8295" or any Google Maps URL containing @lat,lng or !3dlat!4dlng */
+function parseLatLng(str){
+  if(!str) return null;
+  let m = str.match(/(-?\d{1,3}\.\d{3,})\s*,\s*(-?\d{1,3}\.\d{3,})/);
+  if(!m) m = str.match(/@(-?\d{1,3}\.\d{3,}),(-?\d{1,3}\.\d{3,})/);
+  if(!m){
+    const a = str.match(/!3d(-?\d{1,3}\.\d{3,})/), b = str.match(/!4d(-?\d{1,3}\.\d{3,})/);
+    if(a&&b) m=[null,a[1],b[1]];
+  }
+  if(!m) return null;
+  const lat=parseFloat(m[1]), lng=parseFloat(m[2]);
+  if(!isFinite(lat)||!isFinite(lng)||Math.abs(lat)>90||Math.abs(lng)>180) return null;
+  return {lat,lng};
+}
+
+function pasteMapLink(){
+  const v = window.prompt('Paste a Google Maps link, or type "latitude, longitude"');
+  if(v===null) return;
+  const c = parseLatLng(v.trim());
+  if(!c){ P.err='That link had no coordinates in it. Open the pin in Google Maps, Share, Copy link.'; renderPorter(); return; }
+  setCoords(c.lat, c.lng);
+}
+
+async function fetchPorterQuote(){
+  if(!P.enabled || !P.coords) return;
+  P.busy=true; P.err=''; renderPorter();
+  try{
+    const r = await fetch(P.cfg.quoteUrl, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ pickup:P.cfg.pickup, drop:P.coords, vehicle:P.cfg.vehicle||'2W' })
+    });
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const d = await r.json();
+    P.quote = { serviceable: d.serviceable !== false && typeof d.fare === 'number',
+                fare: d.fare, eta: d.eta || d.eta_minutes || null, raw: d };
+  }catch(e){
+    console.error('Porter quote failed', e);
+    P.quote=null;
+    P.err='Could not reach Porter just now — the standard delivery fee applies.';
+  }
+  P.busy=false;
+  renderPorter(); renderCart();
+}
+
+async function createPorterOrder(payload){
+  const r = await fetch(P.cfg.orderUrl, {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify(payload)
+  });
+  if(!r.ok) throw new Error('HTTP '+r.status);
+  return r.json();   // expects { order_id, tracking_url }
 }
 
 /* ================= CHECKOUT ================= */
@@ -568,6 +699,8 @@ $('#placeOrder').onclick=()=>{
     addr=val('fAddress'); landmark=val('fLandmark');
     mark('fAddress',!addr);
     if(!addr){ msg.textContent='Add a delivery address.'; return; }
+    if(P.enabled && !P.coords){ msg.textContent='Set your drop pin — Porter dispatches the rider to coordinates, not to the address text.'; return; }
+    if(P.enabled && P.quote && !P.quote.serviceable){ msg.textContent="Porter doesn't serve that drop point. Try a closer pin or switch to Takeaway."; return; }
     store.set('wingd_addr',addr); store.set('wingd_lm',landmark);
   } else if(MODE==='Takeaway'){ extra=val('fWhen'); }
   else { extra=val('fPax'); }
@@ -594,8 +727,47 @@ $('#placeOrder').onclick=()=>{
   else if(MODE==='Dine-in'&&extra) L.push(`Guests: ${extra}`);
   L.push(''); L.push(`Placed from the WING'D site · ${new Date().toLocaleString('en-IN')}`);
 
-  window.open('https://wa.me/'+s.whatsapp+'?text='+encodeURIComponent(L.join('\n')),'_blank','noopener');
-  toast('Order sent to WhatsApp');
+  const send = (extraLines)=>{
+    const body = L.concat(extraLines||[]).join('\n');
+    window.open('https://wa.me/'+s.whatsapp+'?text='+encodeURIComponent(body),'_blank','noopener');
+    toast('Order sent to WhatsApp');
+  };
+
+  if(MODE==='Delivery' && P.enabled && P.coords){
+    msg.style.color='var(--black)';
+    msg.textContent='Booking the Porter rider…';
+    createPorterOrder({
+      vehicle: P.cfg.vehicle || '2W',
+      pickup:  P.cfg.pickup,
+      drop:    { lat:P.coords.lat, lng:P.coords.lng, address:addr, landmark:landmark,
+                 contact_name:name, contact_phone:tel },
+      amount:  t.grand,
+      items:   CART.map(l=>({name:l.name, size:l.size, qty:l.qty, sauces:l.sauces, dips:l.dips, note:l.note})),
+      quote:   P.quote ? P.quote.raw : null
+    }).then(res=>{
+      P.order = res || {};
+      msg.style.color='var(--black)';
+      msg.textContent = res && res.tracking_url
+        ? 'Porter rider booked. Tracking link is in your WhatsApp message.'
+        : 'Porter job sent to the store.';
+      const lines = [''];
+      if(res && res.order_id)     lines.push('Porter order: ' + res.order_id);
+      if(res && res.tracking_url) lines.push('Track: ' + res.tracking_url);
+      lines.push('Drop pin: ' + P.coords.lat.toFixed(5) + ',' + P.coords.lng.toFixed(5));
+      send(lines);
+    }).catch(err=>{
+      console.error('Porter booking failed', err);
+      msg.style.color='var(--red)';
+      msg.textContent = 'Porter booking failed — the order still went to the store, who will arrange the rider.';
+      send(['', 'PORTER BOOKING FAILED — arrange the rider manually.',
+            'Drop pin: ' + P.coords.lat.toFixed(5) + ',' + P.coords.lng.toFixed(5)]);
+    });
+    return;
+  }
+
+  send(MODE==='Delivery' && P.coords
+       ? ['', 'Drop pin: ' + P.coords.lat.toFixed(5) + ',' + P.coords.lng.toFixed(5)]
+       : []);
 };
 
 /* ================= PANELS ================= */
