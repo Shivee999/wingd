@@ -1,0 +1,181 @@
+{
+  "name": "WING'D — Porter delivery relay",
+  "_README": [
+    "Import this into n8n (Workflows > Import from File), then do FOUR things:",
+    "",
+    "1. Open the 'Porter config' node and set PORTER_BASE and the three paths from the",
+    "   API documentation Porter emails you when they issue credentials. I could NOT",
+    "   verify Porter's exact endpoint paths, request bodies or auth header — porter.in/api-docs",
+    "   blocks automated access. Do not trust the placeholder values below; replace them.",
+    "2. Create an n8n credential (Header Auth) holding the Porter API key and attach it to",
+    "   the two 'Porter …' HTTP Request nodes. The key must never leave n8n.",
+    "3. Activate the workflow, copy the two Production webhook URLs, and paste them into",
+    "   menu.json > porter.quoteUrl and porter.orderUrl. Set porter.enabled to true.",
+    "4. Give Porter the /porter-status webhook URL so rider status updates land back here.",
+    "",
+    "Verified from porter.in/api-integrations (Aug 2026): Porter exposes Get Quote,",
+    "Create Order and Track Order APIs; the Create Order response contains a tracking link;",
+    "Track Order is rate limited to once per minute per order; webhooks fire on Accepted,",
+    "Live, Ended, Reopened and Cancelled; only 2-wheelers are bookable via API; one pickup",
+    "and one drop per order; pickup and drop must be sent as latitude/longitude."
+  ],
+  "settings": { "executionOrder": "v1" },
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "wingd/porter-quote",
+        "responseMode": "responseNode",
+        "options": { "allowedOrigins": "*" }
+      },
+      "id": "hook-quote",
+      "name": "Webhook — quote",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-560, -160],
+      "webhookId": "wingd-porter-quote"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "wingd/porter-order",
+        "responseMode": "responseNode",
+        "options": { "allowedOrigins": "*" }
+      },
+      "id": "hook-order",
+      "name": "Webhook — create order",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-560, 180],
+      "webhookId": "wingd-porter-order"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "wingd/porter-status",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "hook-status",
+      "name": "Webhook — Porter status",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-560, 520],
+      "webhookId": "wingd-porter-status"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "a1", "name": "PORTER_BASE", "value": "https://REPLACE-ME.porter.in", "type": "string" },
+            { "id": "a2", "name": "PATH_QUOTE", "value": "/REPLACE/get_quote", "type": "string" },
+            { "id": "a3", "name": "PATH_ORDER", "value": "/REPLACE/create_order", "type": "string" },
+            { "id": "a4", "name": "PATH_TRACK", "value": "/REPLACE/track_order", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cfg",
+      "name": "Porter config — FILL THESE IN",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [-320, 0],
+      "notes": "Endpoint paths are placeholders. Copy the real ones from the Porter API documentation supplied with your credentials."
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Porter config — FILL THESE IN').first().json.PORTER_BASE + $('Porter config — FILL THESE IN').first().json.PATH_QUOTE }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ pickup_details: { lat: $('Webhook — quote').first().json.body.pickup.lat, lng: $('Webhook — quote').first().json.body.pickup.lng }, drop_details: { lat: $('Webhook — quote').first().json.body.drop.lat, lng: $('Webhook — quote').first().json.body.drop.lng }, customer: { mobile: { country_code: '+91', number: $('Webhook — quote').first().json.body.pickup.contact } } }) }}",
+        "options": { "response": { "response": { "neverError": true, "responseFormat": "json" } } }
+      },
+      "id": "porter-quote",
+      "name": "Porter — Get Quote",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [-80, -160],
+      "notes": "Body shape is a best guess and MUST be checked against Porter's documentation. Attach the Header Auth credential holding the Porter API key."
+    },
+    {
+      "parameters": {
+        "jsCode": "// Normalise Porter's quote into the shape the WING'D site expects:\n//   { serviceable: boolean, fare: number, eta: number|null }\n// Adjust the field names once you can see a real Porter response.\nconst r = $input.first().json || {};\nconst fare = r.fare ?? r.estimated_fare ?? r.total_fare\n          ?? (r.vehicles && r.vehicles[0] && r.vehicles[0].fare && r.vehicles[0].fare.minor_amount / 100);\nconst serviceable = r.serviceable !== false && typeof fare === 'number' && isFinite(fare);\nreturn [{ json: {\n  serviceable,\n  fare: serviceable ? Math.round(fare) : null,\n  eta: r.eta ?? r.eta_minutes ?? null,\n  reason: serviceable ? null : (r.reason || 'Not serviceable'),\n  raw: r\n}}];"
+      },
+      "id": "norm-quote",
+      "name": "Normalise quote",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [160, -160]
+    },
+    {
+      "parameters": { "options": { "responseHeaders": { "entries": [ { "name": "Access-Control-Allow-Origin", "value": "*" } ] } } },
+      "id": "resp-quote",
+      "name": "Respond — quote",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [400, -160]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Porter config — FILL THESE IN').first().json.PORTER_BASE + $('Porter config — FILL THESE IN').first().json.PATH_ORDER }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ request_id: 'WINGD-' + Date.now(), delivery_instructions: { instructions_list: [{ type: 'text', description: ($('Webhook — create order').first().json.body.items || []).map(i => i.qty + 'x ' + i.name + (i.size ? ' (' + i.size + ')' : '')).join(', ').slice(0, 200) }] }, pickup_details: { address: $('Webhook — create order').first().json.body.pickup }, drop_details: { address: $('Webhook — create order').first().json.body.drop } }) }}",
+        "options": { "response": { "response": { "neverError": true, "responseFormat": "json" } } }
+      },
+      "id": "porter-order",
+      "name": "Porter — Create Order",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [-80, 180],
+      "notes": "Body shape is a best guess and MUST be checked against Porter's documentation. Attach the Header Auth credential holding the Porter API key."
+    },
+    {
+      "parameters": {
+        "jsCode": "// Normalise Porter's create-order response into:\n//   { order_id, tracking_url, status }\nconst r = $input.first().json || {};\nconst id  = r.order_id ?? r.id ?? r.crn ?? null;\nconst url = r.tracking_url ?? r.track_url ?? r.tracking_link ?? null;\nif (!id) { throw new Error('Porter did not return an order id: ' + JSON.stringify(r).slice(0, 400)); }\nreturn [{ json: { order_id: id, tracking_url: url, status: r.status || 'created', raw: r } }];"
+      },
+      "id": "norm-order",
+      "name": "Normalise order",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [160, 180]
+    },
+    {
+      "parameters": { "options": { "responseHeaders": { "entries": [ { "name": "Access-Control-Allow-Origin", "value": "*" } ] } } },
+      "id": "resp-order",
+      "name": "Respond — order",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [400, 180]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Porter fires this on Accepted, Live, Ended, Reopened and Cancelled.\n// Log it, and optionally notify the store on the stages that matter.\nconst b = $input.first().json.body || {};\nreturn [{ json: { order_id: b.order_id ?? b.crn ?? null, status: b.status ?? b.event ?? null, at: new Date().toISOString(), raw: b } }];"
+      },
+      "id": "norm-status",
+      "name": "Normalise status event",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-320, 520]
+    }
+  ],
+  "connections": {
+    "Webhook — quote":        { "main": [[{ "node": "Porter config — FILL THESE IN", "type": "main", "index": 0 }]] },
+    "Webhook — create order": { "main": [[{ "node": "Porter config — FILL THESE IN", "type": "main", "index": 0 }]] },
+    "Porter config — FILL THESE IN": { "main": [[
+      { "node": "Porter — Get Quote", "type": "main", "index": 0 },
+      { "node": "Porter — Create Order", "type": "main", "index": 0 }
+    ]] },
+    "Porter — Get Quote":    { "main": [[{ "node": "Normalise quote", "type": "main", "index": 0 }]] },
+    "Normalise quote":       { "main": [[{ "node": "Respond — quote", "type": "main", "index": 0 }]] },
+    "Porter — Create Order": { "main": [[{ "node": "Normalise order", "type": "main", "index": 0 }]] },
+    "Normalise order":       { "main": [[{ "node": "Respond — order", "type": "main", "index": 0 }]] },
+    "Webhook — Porter status": { "main": [[{ "node": "Normalise status event", "type": "main", "index": 0 }]] }
+  }
+}
