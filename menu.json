@@ -18,23 +18,75 @@
     "gstPercent": 5,
     "minOrder": 199,
     "prepTimeMins": "18–25",
-    "orderTypes": ["Delivery", "Takeaway", "Dine-in"]
+    "orderTypes": [
+      "Delivery",
+      "Takeaway",
+      "Dine-in"
+    ]
   },
   "sauces": [
-    { "id": "garlic-parmesan", "name": "Garlic Parmesan",         "note": "Buttery garlic sauce finished with rich parmesan cheese." },
-    { "id": "lemon-butter",    "name": "Lemon Butter",            "note": "Zesty lemon, cracked black pepper, buttery seasoning." },
-    { "id": "mango-peach",     "name": "Mango & Peach Glaze",     "note": "Sweet and tangy mango-peach chilli, glossy fruity finish." },
-    { "id": "korean",          "name": "Korean",                  "note": "Sticky spicy-sweet Korean gochujang glaze." },
-    { "id": "hawaiian-hab",    "name": "Hawaiian Habanero",       "note": "Pineapple sauce with a fiery habanero kick." },
-    { "id": "hickory-bbq",     "name": "Hickory Smoked BBQ",      "note": "Smokey hickory BBQ glaze with a rich, charred finish." },
-    { "id": "texas-buffalo",   "name": "Texas Buffalo",           "note": "Bold, buttery Texas-style buffalo. Spicy and tangy." },
-    { "id": "cajun-rub",       "name": "Louisiana Cajun Dry Rub", "note": "Southern-style zesty cajun dry rub. Fiery, flavourful." }
+    {
+      "id": "garlic-parmesan",
+      "name": "Garlic Parmesan",
+      "note": "Buttery garlic sauce finished with rich parmesan cheese."
+    },
+    {
+      "id": "lemon-butter",
+      "name": "Lemon Butter",
+      "note": "Zesty lemon, cracked black pepper, buttery seasoning."
+    },
+    {
+      "id": "mango-peach",
+      "name": "Mango & Peach Glaze",
+      "note": "Sweet and tangy mango-peach chilli, glossy fruity finish."
+    },
+    {
+      "id": "korean",
+      "name": "Korean",
+      "note": "Sticky spicy-sweet Korean gochujang glaze."
+    },
+    {
+      "id": "hawaiian-hab",
+      "name": "Hawaiian Habanero",
+      "note": "Pineapple sauce with a fiery habanero kick."
+    },
+    {
+      "id": "hickory-bbq",
+      "name": "Hickory Smoked BBQ",
+      "note": "Smokey hickory BBQ glaze with a rich, charred finish."
+    },
+    {
+      "id": "texas-buffalo",
+      "name": "Texas Buffalo",
+      "note": "Bold, buttery Texas-style buffalo. Spicy and tangy."
+    },
+    {
+      "id": "cajun-rub",
+      "name": "Louisiana Cajun Dry Rub",
+      "note": "Southern-style zesty cajun dry rub. Fiery, flavourful."
+    }
   ],
   "dips": [
-    { "id": "ranch",         "name": "Ranch",              "price": 50 },
-    { "id": "fiery-pepper",  "name": "Fiery Pepper",       "price": 50 },
-    { "id": "honey-mustard", "name": "Honey Mustard",      "price": 50 },
-    { "id": "chili-truffle", "name": "Chili Truffle Sauce","price": 50 }
+    {
+      "id": "ranch",
+      "name": "Ranch",
+      "price": 50
+    },
+    {
+      "id": "fiery-pepper",
+      "name": "Fiery Pepper",
+      "price": 50
+    },
+    {
+      "id": "honey-mustard",
+      "name": "Honey Mustard",
+      "price": 50
+    },
+    {
+      "id": "chili-truffle",
+      "name": "Chili Truffle Sauce",
+      "price": 50
+    }
   ],
   "categories": [
     {
@@ -42,24 +94,179 @@
       "name": "Wings",
       "tagline": "4PC · 6PC · 8PC",
       "items": [
-        { "id": "w-choice", "name": "Wings", "desc": "Choice of your Wing'd sauce.", "sauces": 1,
-          "sizes": [{"label":"4 PC","price":349},{"label":"6 PC","price":479},{"label":"8 PC","price":649}], "badge": "Pick your sauce" },
-        { "id": "w-garlic", "name": "Garlic Parmesan", "desc": "Crispy chicken wings tossed in buttery garlic sauce and finished with rich parmesan cheese.",
-          "sizes": [{"label":"4 PC","price":349},{"label":"6 PC","price":479},{"label":"8 PC","price":649}] },
-        { "id": "w-lemon", "name": "Lemon Butter", "desc": "Crispy wings tossed in zesty lemon, cracked black pepper, buttery seasoning for a bright, tangy kick.",
-          "sizes": [{"label":"4 PC","price":349},{"label":"6 PC","price":479},{"label":"8 PC","price":649}] },
-        { "id": "w-mango", "name": "Mango & Peach Glaze", "desc": "Crispy wings glazed in a sweet and tangy mango-peach chilli sauce with a glossy, fruity finish.",
-          "sizes": [{"label":"4 PC","price":349},{"label":"6 PC","price":479},{"label":"8 PC","price":649}] },
-        { "id": "w-korean", "name": "Korean Chicken Wings", "desc": "Crispy wings coated in a sticky spicy-sweet Korean gochujang glaze.",
-          "sizes": [{"label":"4 PC","price":349},{"label":"6 PC","price":479},{"label":"8 PC","price":649}] },
-        { "id": "w-hawaiian", "name": "Hawaiian Habanero", "desc": "Crispy wings glazed in a pineapple sauce with a fiery habanero kick.",
-          "sizes": [{"label":"4 PC","price":349},{"label":"6 PC","price":479},{"label":"8 PC","price":649}] },
-        { "id": "w-bbq", "name": "Hickory Smoked BBQ", "desc": "Crispy wings coated in a smokey, hickory BBQ glaze with a rich, charred finish.",
-          "sizes": [{"label":"4 PC","price":349},{"label":"6 PC","price":479},{"label":"8 PC","price":649}] },
-        { "id": "w-texas", "name": "Texas Buffalo", "desc": "Crispy chicken wings tossed in a bold, buttery Texas-style buffalo sauce with a spicy, tangy kick.",
-          "sizes": [{"label":"4 PC","price":349},{"label":"6 PC","price":479},{"label":"8 PC","price":649}] },
-        { "id": "w-cajun", "name": "Louisiana Cajun Dry Rub", "desc": "Louisiana cajun dry rub southern-style wings coated in zesty cajun dry rub for fiery flavourful bites.",
-          "sizes": [{"label":"4 PC","price":349},{"label":"6 PC","price":479},{"label":"8 PC","price":649}] }
+        {
+          "id": "w-choice",
+          "name": "Wings",
+          "desc": "Choice of your Wing'd sauce.",
+          "sauces": 1,
+          "sizes": [
+            {
+              "label": "4 PC",
+              "price": 349
+            },
+            {
+              "label": "6 PC",
+              "price": 479
+            },
+            {
+              "label": "8 PC",
+              "price": 649
+            }
+          ],
+          "badge": "Pick your sauce"
+        },
+        {
+          "id": "w-garlic",
+          "name": "Garlic Parmesan",
+          "desc": "Crispy chicken wings tossed in buttery garlic sauce and finished with rich parmesan cheese.",
+          "sizes": [
+            {
+              "label": "4 PC",
+              "price": 349
+            },
+            {
+              "label": "6 PC",
+              "price": 479
+            },
+            {
+              "label": "8 PC",
+              "price": 649
+            }
+          ]
+        },
+        {
+          "id": "w-lemon",
+          "name": "Lemon Butter",
+          "desc": "Crispy wings tossed in zesty lemon, cracked black pepper, buttery seasoning for a bright, tangy kick.",
+          "sizes": [
+            {
+              "label": "4 PC",
+              "price": 349
+            },
+            {
+              "label": "6 PC",
+              "price": 479
+            },
+            {
+              "label": "8 PC",
+              "price": 649
+            }
+          ]
+        },
+        {
+          "id": "w-mango",
+          "name": "Mango & Peach Glaze",
+          "desc": "Crispy wings glazed in a sweet and tangy mango-peach chilli sauce with a glossy, fruity finish.",
+          "sizes": [
+            {
+              "label": "4 PC",
+              "price": 349
+            },
+            {
+              "label": "6 PC",
+              "price": 479
+            },
+            {
+              "label": "8 PC",
+              "price": 649
+            }
+          ]
+        },
+        {
+          "id": "w-korean",
+          "name": "Korean Chicken Wings",
+          "desc": "Crispy wings coated in a sticky spicy-sweet Korean gochujang glaze.",
+          "sizes": [
+            {
+              "label": "4 PC",
+              "price": 349
+            },
+            {
+              "label": "6 PC",
+              "price": 479
+            },
+            {
+              "label": "8 PC",
+              "price": 649
+            }
+          ]
+        },
+        {
+          "id": "w-hawaiian",
+          "name": "Hawaiian Habanero",
+          "desc": "Crispy wings glazed in a pineapple sauce with a fiery habanero kick.",
+          "sizes": [
+            {
+              "label": "4 PC",
+              "price": 349
+            },
+            {
+              "label": "6 PC",
+              "price": 479
+            },
+            {
+              "label": "8 PC",
+              "price": 649
+            }
+          ]
+        },
+        {
+          "id": "w-bbq",
+          "name": "Hickory Smoked BBQ",
+          "desc": "Crispy wings coated in a smokey, hickory BBQ glaze with a rich, charred finish.",
+          "sizes": [
+            {
+              "label": "4 PC",
+              "price": 349
+            },
+            {
+              "label": "6 PC",
+              "price": 479
+            },
+            {
+              "label": "8 PC",
+              "price": 649
+            }
+          ]
+        },
+        {
+          "id": "w-texas",
+          "name": "Texas Buffalo",
+          "desc": "Crispy chicken wings tossed in a bold, buttery Texas-style buffalo sauce with a spicy, tangy kick.",
+          "sizes": [
+            {
+              "label": "4 PC",
+              "price": 349
+            },
+            {
+              "label": "6 PC",
+              "price": 479
+            },
+            {
+              "label": "8 PC",
+              "price": 649
+            }
+          ]
+        },
+        {
+          "id": "w-cajun",
+          "name": "Louisiana Cajun Dry Rub",
+          "desc": "Louisiana cajun dry rub southern-style wings coated in zesty cajun dry rub for fiery flavourful bites.",
+          "sizes": [
+            {
+              "label": "4 PC",
+              "price": 349
+            },
+            {
+              "label": "6 PC",
+              "price": 479
+            },
+            {
+              "label": "8 PC",
+              "price": 649
+            }
+          ]
+        }
       ]
     },
     {
@@ -67,8 +274,26 @@
       "name": "Boneless",
       "tagline": "8PC · 10PC · 12PC",
       "items": [
-        { "id": "b-choice", "name": "Boneless", "desc": "Choice of your Wing'd sauce.", "sauces": 1,
-          "sizes": [{"label":"8 PC","price":349},{"label":"10 PC","price":479},{"label":"12 PC","price":649}] }
+        {
+          "id": "b-choice",
+          "name": "Boneless",
+          "desc": "Choice of your Wing'd sauce.",
+          "sauces": 1,
+          "sizes": [
+            {
+              "label": "8 PC",
+              "price": 349
+            },
+            {
+              "label": "10 PC",
+              "price": 479
+            },
+            {
+              "label": "12 PC",
+              "price": 649
+            }
+          ]
+        }
       ]
     },
     {
@@ -76,8 +301,15 @@
       "name": "Platters",
       "tagline": "Built to share",
       "items": [
-        { "id": "p-flavourfix", "name": "Flavour Fix Platter", "desc": "12 pieces · 3 flavours · 2 dips.",
-          "price": 949, "sauces": 3, "dips": 2, "badge": "12 pieces" }
+        {
+          "id": "p-flavourfix",
+          "name": "Flavour Fix Platter",
+          "desc": "12 pieces · 3 flavours · 2 dips.",
+          "price": 949,
+          "sauces": 3,
+          "dips": 2,
+          "badge": "12 pieces"
+        }
       ]
     },
     {
@@ -85,10 +317,37 @@
       "name": "Chicken Tenders",
       "tagline": "3PC · 5PC",
       "items": [
-        { "id": "t-periperi", "name": "Peri-Peri Chicken Tenders", "desc": "Juicy chicken tender tossed in a bold, spicy peri-peri rub with a smokey, tangy kick.",
-          "sizes": [{"label":"3 PC","price":379},{"label":"5 PC","price":599}] },
-        { "id": "t-classic", "name": "Classic Chicken Tenders", "desc": "Tossed in your choice of Wing'd sauce.", "sauces": 1,
-          "sizes": [{"label":"3 PC","price":399},{"label":"5 PC","price":599}] }
+        {
+          "id": "t-periperi",
+          "name": "Peri-Peri Chicken Tenders",
+          "desc": "Juicy chicken tender tossed in a bold, spicy peri-peri rub with a smokey, tangy kick.",
+          "sizes": [
+            {
+              "label": "3 PC",
+              "price": 379
+            },
+            {
+              "label": "5 PC",
+              "price": 599
+            }
+          ]
+        },
+        {
+          "id": "t-classic",
+          "name": "Classic Chicken Tenders",
+          "desc": "Tossed in your choice of Wing'd sauce.",
+          "sauces": 1,
+          "sizes": [
+            {
+              "label": "3 PC",
+              "price": 399
+            },
+            {
+              "label": "5 PC",
+              "price": 599
+            }
+          ]
+        }
       ]
     },
     {
@@ -96,9 +355,25 @@
       "name": "Fries",
       "tagline": "Never optional",
       "items": [
-        { "id": "f-loaded", "name": "Loaded Tender Fries", "desc": "French fries tossed in peri-peri rub, chicken tenders with fiery pepper sauce, cheese sauce & pickled jalapenos.", "price": 479, "badge": "Loaded" },
-        { "id": "f-truffle", "name": "Truffle Parmesan Fries", "desc": "Salted fries with parmesan cheese & truffle sauce.", "price": 379 },
-        { "id": "f-cheesy", "name": "Cheesy Fries", "desc": "Salted fries loaded with cheese sauce on top.", "price": 349 }
+        {
+          "id": "f-loaded",
+          "name": "Loaded Tender Fries",
+          "desc": "French fries tossed in peri-peri rub, chicken tenders with fiery pepper sauce, cheese sauce & pickled jalapenos.",
+          "price": 479,
+          "badge": "Loaded"
+        },
+        {
+          "id": "f-truffle",
+          "name": "Truffle Parmesan Fries",
+          "desc": "Salted fries with parmesan cheese & truffle sauce.",
+          "price": 379
+        },
+        {
+          "id": "f-cheesy",
+          "name": "Cheesy Fries",
+          "desc": "Salted fries loaded with cheese sauce on top.",
+          "price": 349
+        }
       ]
     },
     {
@@ -106,9 +381,24 @@
       "name": "Sides",
       "tagline": "The supporting cast",
       "items": [
-        { "id": "s-wedges", "name": "Salted Potato Wedges", "desc": "Thick-cut wedges, salted.", "price": 349 },
-        { "id": "s-hothoney", "name": "Hot Honey Chilly Potato Wedges", "desc": "Wedges in hot honey and chilli.", "price": 379 },
-        { "id": "s-bricks", "name": "Honey Chipotle Mozzarella Bricks", "desc": "Mozzarella bricks with honey chipotle.", "price": 479 }
+        {
+          "id": "s-wedges",
+          "name": "Salted Potato Wedges",
+          "desc": "Thick-cut wedges, salted.",
+          "price": 349
+        },
+        {
+          "id": "s-hothoney",
+          "name": "Hot Honey Chilly Potato Wedges",
+          "desc": "Wedges in hot honey and chilli.",
+          "price": 379
+        },
+        {
+          "id": "s-bricks",
+          "name": "Honey Chipotle Mozzarella Bricks",
+          "desc": "Mozzarella bricks with honey chipotle.",
+          "price": 479
+        }
       ]
     },
     {
@@ -116,10 +406,30 @@
       "name": "Dips",
       "tagline": "Any at ₹50",
       "items": [
-        { "id": "d-ranch", "name": "Ranch", "desc": "House ranch.", "price": 50 },
-        { "id": "d-fiery", "name": "Fiery Pepper", "desc": "Fiery pepper dip.", "price": 50 },
-        { "id": "d-honey", "name": "Honey Mustard", "desc": "Sweet and sharp.", "price": 50 },
-        { "id": "d-truffle", "name": "Chili Truffle Sauce", "desc": "Chilli truffle.", "price": 50 }
+        {
+          "id": "d-ranch",
+          "name": "Ranch",
+          "desc": "House ranch.",
+          "price": 50
+        },
+        {
+          "id": "d-fiery",
+          "name": "Fiery Pepper",
+          "desc": "Fiery pepper dip.",
+          "price": 50
+        },
+        {
+          "id": "d-honey",
+          "name": "Honey Mustard",
+          "desc": "Sweet and sharp.",
+          "price": 50
+        },
+        {
+          "id": "d-truffle",
+          "name": "Chili Truffle Sauce",
+          "desc": "Chilli truffle.",
+          "price": 50
+        }
       ]
     },
     {
@@ -127,11 +437,47 @@
       "name": "Beverages",
       "tagline": "House sodas",
       "items": [
-        { "id": "bv-jammin", "name": "Jammin' Red", "desc": "Fresh watermelon, jamun & a fizzy vanilla twist.", "price": 199 },
-        { "id": "bv-pink", "name": "Pink Static", "desc": "Raspberry, pineapple & basil blended into a tropical fizz.", "price": 199 },
-        { "id": "bv-peach", "name": "Peach Mode", "desc": "Refreshing peach iced tea with a bright citrus kick.", "price": 199 },
-        { "id": "bv-sunset", "name": "Sunset Rush", "desc": "Passion fruit, orange & lemongrass topped with a light tropical foam.", "price": 199 }
+        {
+          "id": "bv-jammin",
+          "name": "Jammin' Red",
+          "desc": "Fresh watermelon, jamun & a fizzy vanilla twist.",
+          "price": 199
+        },
+        {
+          "id": "bv-pink",
+          "name": "Pink Static",
+          "desc": "Raspberry, pineapple & basil blended into a tropical fizz.",
+          "price": 199
+        },
+        {
+          "id": "bv-peach",
+          "name": "Peach Mode",
+          "desc": "Refreshing peach iced tea with a bright citrus kick.",
+          "price": 199
+        },
+        {
+          "id": "bv-sunset",
+          "name": "Sunset Rush",
+          "desc": "Passion fruit, orange & lemongrass topped with a light tropical foam.",
+          "price": 199
+        }
       ]
     }
-  ]
+  ],
+  "porter": {
+    "_readme": "Porter (porter.in) 2-wheeler delivery. Porter's API keys must NEVER live in this file or in the browser — this site is static and anyone can read it. quoteUrl/orderUrl point at YOUR n8n webhooks, which hold the Porter credentials server-side. See PORTER-SETUP.md. Leave enabled=false until the n8n workflow is live; the site falls back to the flat delivery fee and keeps working.",
+    "enabled": false,
+    "quoteUrl": "",
+    "orderUrl": "",
+    "vehicle": "2W",
+    "pickup": {
+      "address": "WING'D, Bandra West, Mumbai 400050",
+      "lat": 19.0596,
+      "lng": 72.8295,
+      "contact": "+918707546331",
+      "_note": "APPROXIMATE Bandra West coordinates and a placeholder contact. Replace with the exact store pin and the store's phone before enabling — Porter dispatches the rider to these coordinates, not to the address text."
+    },
+    "storeAbsorbsFareAboveFreeThreshold": true,
+    "cities": "Porter API serves Mumbai. 2-wheeler only, one pickup and one drop per order."
+  }
 }
