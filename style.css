@@ -351,3 +351,14 @@ textarea.note:focus{border-color:var(--red)}
   *{animation-duration:.001ms !important;transition-duration:.001ms !important}
   html{scroll-behavior:auto}
 }
+
+/* ---------- porter delivery ---------- */
+.porterbox{border:2px dashed var(--black);padding:12px;margin-top:2px;background:rgba(35,31,32,.04)}
+.porterbox .prow{display:flex;flex-wrap:wrap;gap:7px}
+.porterbox .pbtn{padding:9px 14px;font-size:.68rem;letter-spacing:.12em}
+.porterbox .pcoord{font-family:'Zilla Slab',serif;font-weight:700;font-size:.72rem;letter-spacing:.06em;margin-top:9px}
+.porterbox .pstatwrap{margin-top:7px}
+.porterbox .pstat{font-size:.78rem;line-height:1.45;display:block;opacity:.8}
+.porterbox .pstat.ok{color:#1B7A32;font-weight:600;opacity:1}
+.porterbox .pstat.bad{color:var(--red);font-weight:600;opacity:1}
+.porterbox .pstat.wait{opacity:.65}
