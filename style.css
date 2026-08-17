@@ -343,9 +343,13 @@ textarea.note:focus{border-color:var(--red)}
   .nav .wordmark{font-size:1.2rem}
 }
 @media (max-width:520px){
-  .nav{padding:8px 14px;gap:8px}
+  .nav{padding:8px 12px;gap:6px}
+  .nav .wordmark{font-size:1.05rem}
   .tabs{gap:0}
+  .tabs .tab{padding:7px 7px;font-size:.6rem;letter-spacing:.02em;white-space:nowrap}
   .btn{padding:12px 18px;font-size:.75rem}
+  .nav .navcart{padding:9px 12px;font-size:.64rem;white-space:nowrap}
+  .navcart .n{top:-5px;right:-6px;min-width:17px;height:17px;font-size:.6rem}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.001ms !important;transition-duration:.001ms !important}
